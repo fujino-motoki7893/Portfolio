@@ -2,9 +2,13 @@
   <div class="w-full h-[72px] shadow flex justify-center">
     <div class="flex w-full max-w-[1280px] items-center font-bold justify-between px-4 md:px-6">
       <!-- ロゴ部分 -->
-      <div class="text-[20px] sm:text-[24px] md:text-[28px] lg:text-[36px] truncate">
+      <NuxtLink
+        to="/"
+        class="text-[20px] sm:text-[24px] md:text-[28px] lg:text-[36px] truncate"
+        @click="isMenuOpen = false"
+      >
         motokifujino.com
-      </div>
+      </NuxtLink>
 
       <!-- ナビゲーション部分 -->
       <nav class="flex items-center">
