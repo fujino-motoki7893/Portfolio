@@ -83,11 +83,11 @@
     duration-1000 ease-out transform translate-x-[-50px]"
     :class="{ 'opacity-100 translate-x-0': isFrontendVisible }"
   >
-    <div class="w-full lg:w-auto lg:flex-shrink-0 order-2 lg:order-1">
+    <div class="w-full lg:w-auto lg:flex-shrink-0 order-2 lg:order-1 flex justify-center lg:justify-start">
       <NuxtImg
         provider="s3"
         src="/images/town-cut.png"
-        class="w-full h-auto max-w-sm sm:max-w-md md:max-w-lg lg:max-w-xl object-cover"
+        class="w-full h-auto max-w-md sm:max-w-lg md:max-w-xl lg:max-w-[531px] xl:max-w-[600px] object-cover"
       />
     </div>
     <div class="flex items-center order-1 lg:order-2 flex-1">
@@ -112,8 +112,8 @@
 
   <div
     ref="cloudSection"
-    class="flex flex-col lg:flex-row w-full min-h-[400px] lg:h-200 opacity-0 transition-all duration-1000
-    ease-out transform translate-x-[50px]"
+    class="flex flex-col lg:flex-row w-full min-h-[400px] lg:h-200 opacity-0 transition-all
+    duration-1000 ease-out transform translate-x-[50px]"
     :class="{ 'opacity-100 translate-x-0': isCloudVisible }"
   >
     <div class="flex items-center order-1 flex-1">
@@ -134,11 +134,11 @@
         </p>
       </div>
     </div>
-    <div class="w-full lg:w-auto lg:flex-shrink-0 order-2">
+    <div class="w-full lg:w-auto lg:flex-shrink-0 order-2 flex justify-center lg:justify-end">
       <NuxtImg
         provider="s3"
         src="/images/cloud_edit.jpg"
-        class="w-full h-auto max-w-sm sm:max-w-md md:max-w-lg lg:max-w-xl object-cover"
+        class="w-full h-auto max-w-md sm:max-w-lg md:max-w-xl lg:max-w-[531px] xl:max-w-[600px] object-cover"
       />
     </div>
   </div>
