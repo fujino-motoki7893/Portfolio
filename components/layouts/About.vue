@@ -185,7 +185,6 @@ import {
   Lightbulb,
 } from 'lucide-vue-next'
 
-// 各セクションの参照
 const profileImageSection = ref(null)
 const profileTextSection = ref(null)
 const importantTitleSection = ref(null)
@@ -193,7 +192,6 @@ const importantContentSection = ref(null)
 const techTitleSection = ref(null)
 const techContentSection = ref(null)
 
-// 表示状態の管理
 const isProfileImageVisible = ref(false)
 const isProfileTextVisible = ref(false)
 const isImportantTitleVisible = ref(false)
@@ -201,7 +199,6 @@ const isImportantContentVisible = ref(false)
 const isTechTitleVisible = ref(false)
 const isTechContentVisible = ref(false)
 
-// Intersection Observer
 const observerOptions = {
   threshold: 0.2,
   rootMargin: '0px 0px -50px 0px',
@@ -262,12 +259,10 @@ onUnmounted(() => {
   }
 }
 
-/* 名前のフェードイン */
 .animate-name-fade {
   animation: fadeInUp 0.8s ease-out 0.3s forwards;
 }
 
-/* プロフィールテキストの段階的フェードイン */
 .animate-text-fade-1 {
   animation: fadeInUp 0.6s ease-out 0.6s forwards;
 }
@@ -292,7 +287,6 @@ onUnmounted(() => {
   animation: fadeInUp 0.6s ease-out 1.6s forwards;
 }
 
-/* たいせつなことセクション */
 .animate-important-1 {
   animation: fadeInUp 0.6s ease-out 0.3s forwards;
 }
@@ -305,7 +299,6 @@ onUnmounted(() => {
   animation: fadeInUp 0.6s ease-out 0.9s forwards;
 }
 
-/* 技術スタックセクション */
 .animate-tech-1 {
   animation: fadeInUp 0.6s ease-out 0.3s forwards;
 }

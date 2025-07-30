@@ -1,7 +1,6 @@
 <template>
   <div class="w-full h-[72px] shadow flex justify-center">
     <div class="flex w-full max-w-[1280px] items-center font-bold justify-between px-4 md:px-6">
-      <!-- ロゴ部分 -->
       <NuxtLink
         to="/"
         class="text-[20px] sm:text-[24px] md:text-[28px] lg:text-[36px] truncate"
@@ -10,9 +9,7 @@
         motokifujino.com
       </NuxtLink>
 
-      <!-- ナビゲーション部分 -->
       <nav class="flex items-center">
-        <!-- デスクトップ用ナビゲーション -->
         <div
           class="hidden sm:flex text-[16px] md:text-[18px] lg:text-[20px] text-gray-600
         space-x-4 md:space-x-8 lg:space-x-12 items-center"
@@ -34,7 +31,6 @@
           </NuxtLink>
         </div>
 
-        <!-- モバイル用ハンバーガーメニュー -->
         <div class="sm:hidden relative">
           <button
             class="p-2 text-gray-600 hover:text-blue-600 transition-colors"
@@ -56,7 +52,6 @@
             </svg>
           </button>
 
-          <!-- モバイルメニュー -->
           <div
             v-show="isMenuOpen"
             class="absolute right-0 top-full mt-2 w-48 bg-white shadow-lg rounded-lg border z-50"
@@ -85,7 +80,6 @@
     </div>
   </div>
 
-  <!-- モバイルメニュー用のオーバーレイ -->
   <div
     v-show="isMenuOpen"
     class="fixed inset-0 z-40 sm:hidden"
@@ -98,9 +92,8 @@ import { ref, onMounted, onUnmounted } from 'vue'
 
 const isMenuOpen = ref(false)
 
-// 画面サイズが変更された時にメニューを閉じる
 const handleResize = () => {
-  if (window.innerWidth >= 640) { // sm breakpoint
+  if (window.innerWidth >= 640) {
     isMenuOpen.value = false
   }
 }
