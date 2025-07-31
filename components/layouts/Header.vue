@@ -1,15 +1,30 @@
 <template>
-  <div class="w-full h-[72px] shadow flex justify-center">
+  <div
+    :class="[
+      'w-full h-[72px] shadow flex justify-center',
+      isDarkMode ? 'bg-[#1F1F1F] border-b-1 border-white' : '',
+    ]"
+  >
     <div class="flex w-full max-w-[1280px] items-center font-bold justify-between px-4 md:px-6">
       <NuxtLink
         to="/"
-        class="text-[20px] sm:text-[24px] md:text-[28px] lg:text-[36px] truncate"
+        :class="[
+          'text-[20px] sm:text-[24px] md:text-[28px] lg:text-[36px] truncate',
+          isDarkMode ? 'text-white' : 'text-[#1F1F1F]',
+        ]"
         @click="isMenuOpen = false"
       >
         motokifujino.com
       </NuxtLink>
 
-      <nav class="flex items-center">
+      <nav class="flex items-center space-x-3 sm:space-x-4">
+        <div class="flex items-center">
+          <DarkModeToggle
+            v-model="isDarkMode"
+            class="scale-75 sm:scale-90 md:scale-100"
+          />
+        </div>
+
         <div
           class="hidden sm:flex text-[16px] md:text-[18px] lg:text-[20px] text-gray-600
         space-x-4 md:space-x-8 lg:space-x-12 items-center"
@@ -54,21 +69,40 @@
 
           <div
             v-show="isMenuOpen"
-            class="absolute right-0 top-full mt-2 w-48 bg-white shadow-lg rounded-lg border z-50"
+            :class="[
+              'absolute right-0 top-full mt-2 w-48 shadow-lg rounded-lg border z-50',
+              isDarkMode ? 'bg-[#2D2D2D] border-gray-600' : 'bg-white border-gray-200',
+            ]"
           >
             <div class="py-2">
               <NuxtLink
                 to="/"
-                class="block px-4 py-3 text-gray-600 hover:text-blue-600 hover:bg-gray-50 transition-colors"
-                :class="{ 'text-blue-600 bg-blue-50': $route.path === '/' }"
+                :class="[
+                  'block px-4 py-3 transition-colors',
+                  isDarkMode
+                    ? 'text-gray-300 hover:text-blue-400 hover:bg-gray-700'
+                    : 'text-gray-600 hover:text-blue-600 hover:bg-gray-50',
+                  {
+                    'text-blue-400 bg-gray-700': $route.path === '/' && isDarkMode,
+                    'text-blue-600 bg-blue-50': $route.path === '/' && !isDarkMode,
+                  },
+                ]"
                 @click="isMenuOpen = false"
               >
                 HOME
               </NuxtLink>
               <NuxtLink
                 to="/about"
-                class="block px-4 py-3 text-gray-600 hover:text-blue-600 hover:bg-gray-50 transition-colors"
-                :class="{ 'text-blue-600 bg-blue-50': $route.path === '/about' }"
+                :class="[
+                  'block px-4 py-3 transition-colors',
+                  isDarkMode
+                    ? 'text-gray-300 hover:text-blue-400 hover:bg-gray-700'
+                    : 'text-gray-600 hover:text-blue-600 hover:bg-gray-50',
+                  {
+                    'text-blue-400 bg-gray-700': $route.path === '/about' && isDarkMode,
+                    'text-blue-600 bg-blue-50': $route.path === '/about' && !isDarkMode,
+                  },
+                ]"
                 @click="isMenuOpen = false"
               >
                 ABOUT ME
@@ -79,16 +113,14 @@
       </nav>
     </div>
   </div>
-
-  <div
-    v-show="isMenuOpen"
-    class="fixed inset-0 z-40 sm:hidden"
-    @click="isMenuOpen = false"
-  />
 </template>
 
 <script setup>
 import { ref, onMounted, onUnmounted } from 'vue'
+import { DarkModeToggle } from '#components'
+import { injectDarkMode } from '~/composables/domains/darkMode'
+
+const { isDarkMode } = injectDarkMode()
 
 const isMenuOpen = ref(false)
 
