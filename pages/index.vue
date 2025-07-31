@@ -17,7 +17,7 @@
 </template>
 
 <script setup lang="ts">
-import { provideItemList } from '~/composables/domains/itemList'
+import { provideDarkMode } from '~/composables/domains/darkMode'
 
-provideItemList()
+provideDarkMode()
 </script>

@@ -1,5 +1,10 @@
 <template>
-  <div class="px-4 sm:px-6 lg:px-8">
+  <div
+    :class="[
+      'px-4 sm:px-6 lg:px-8',
+      isDarkMode ? 'bg-[#1F1F1F] text-white' : '',
+    ]"
+  >
     <div class="flex flex-col lg:flex-row min-h-[400px] lg:h-200">
       <div
         ref="profileImageSection"
@@ -184,6 +189,9 @@ import {
   UserRound,
   Lightbulb,
 } from 'lucide-vue-next'
+import { injectDarkMode } from '~/composables/domains/darkMode'
+
+const { isDarkMode } = injectDarkMode()
 
 const profileImageSection = ref(null)
 const profileTextSection = ref(null)

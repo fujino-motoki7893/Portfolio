@@ -1,9 +1,22 @@
 <template>
-  <div class="w-full h-[72px] shadow flex justify-center">
+  <div
+    :class="[
+      'w-full h-[72px] shadow flex justify-center',
+      isDarkMode ? 'bg-[#1F1F1F] border-b-1 border-white' : '',
+    ]"
+  >
+    <span class="flex items-center">
+      <DarkModeToggle
+        v-model="isDarkMode"
+      />
+    </span>
     <div class="flex w-full max-w-[1280px] items-center font-bold justify-between px-4 md:px-6">
       <NuxtLink
         to="/"
-        class="text-[20px] sm:text-[24px] md:text-[28px] lg:text-[36px] truncate"
+        :class="[
+          'text-[20px] sm:text-[24px] md:text-[28px] lg:text-[36px] truncate',
+          isDarkMode ? 'text-white' : 'text-[#1F1F1F]',
+        ]"
         @click="isMenuOpen = false"
       >
         motokifujino.com
@@ -89,6 +102,10 @@
 
 <script setup>
 import { ref, onMounted, onUnmounted } from 'vue'
+import { DarkModeToggle } from '#components'
+import { injectDarkMode } from '~/composables/domains/darkMode'
+
+const { isDarkMode } = injectDarkMode()
 
 const isMenuOpen = ref(false)
 
