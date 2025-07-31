@@ -122,7 +122,7 @@
     <div
       ref="cloudSection"
       class="flex flex-col lg:flex-row w-full min-h-[400px] lg:h-200 opacity-0 transition-all
-    duration-1000 ease-out transform translate-x-[50px]"
+    duration-1000 ease-out transform"
       :class="{ 'opacity-100 translate-x-0': isCloudVisible }"
     >
       <div class="flex items-center order-1 flex-1">
