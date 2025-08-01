@@ -27,9 +27,6 @@
     >
       <div class="col-span-12 md:col-span-10 md:col-start-2 lg:col-span-8 lg:col-start-3 xl:col-span-6 xl:col-start-4">
         <div class="grid gap-6">
-          <h2 class="text-2xl sm:text-3xl lg:text-4xl font-bold text-center">
-            技術スタック
-          </h2>
           <div class="grid gap-4 text-sm sm:text-base lg:text-lg leading-relaxed">
             <p>
               自分の技術スタックをまとめたものになります。エヴァンゲリオンのコラージュっぽくするとかっこよくないか？と思って作ってみました。見にくかったらABOUT MEの一番下に箇条書きで記載しているので見てみてください～
@@ -74,9 +71,6 @@
     >
       <div class="col-span-12 md:col-span-10 md:col-start-2 lg:col-span-8 lg:col-start-3 xl:col-span-6 xl:col-start-4">
         <div class="grid gap-6">
-          <h2 class="text-2xl sm:text-3xl lg:text-4xl font-bold text-center">
-            Argo CD導入
-          </h2>
           <div class="grid gap-4 text-sm sm:text-base lg:text-lg leading-relaxed">
             <p>
               Argo CDというGitOps をAzure Kubernetes Services 上に導入した時のアーキテクチャ図になります。こちらの導入によりリリース
