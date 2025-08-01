@@ -155,7 +155,8 @@
             フロントエンド...
           </span>
           <p class="w-full lg:w-[1220px]">
-            TypeScript, HTML/CSS, Nuxt.js, Vue.js, pnpm, codegen, Tailwind.css, Figma, 単一責任の原則、アトミックデザイン（縛られ過ぎない程度に）
+            TypeScript, JavaScript, HTML/CSS, Nuxt.js, Vue.js, pnpm, codegen, Tailwind.css, Figma, 単一責任の原則、
+            アトミックデザイン（縛られ過ぎない程度に）
           </p>
         </div>
         <div class="flex flex-col lg:flex-row mb-6 lg:mb-8">
