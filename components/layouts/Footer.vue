@@ -27,6 +27,13 @@
             HOME
           </NuxtLink>
           <NuxtLink
+            to="/gallery"
+            class="hover:text-gray-300"
+            :class="{ '': $route.path === '/gallery' }"
+          >
+            GALLERY
+          </NuxtLink>
+          <NuxtLink
             to="/about"
             class="hover:text-gray-300"
             :class="{ '': $route.path === '/about' }"
@@ -68,6 +75,13 @@
           :class="{ '': $route.path === '/' }"
         >
           HOME
+        </NuxtLink>
+        <NuxtLink
+          to="/gallery"
+          class="text-xl md:text-2xl hover:text-gray-300"
+          :class="{ '': $route.path === '/gallery' }"
+        >
+          GALLERY
         </NuxtLink>
         <NuxtLink
           to="/about"

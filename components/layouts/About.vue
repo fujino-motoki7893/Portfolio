@@ -15,7 +15,7 @@
       >
         <NuxtImg
           provider="s3"
-          src="/images/fujino_ago.jpg"
+          src="./images/fujino_ago.jpg"
           alt="藤野元規"
           class="w-32 h-32 sm:w-40 sm:h-40 md:w-48 md:h-48 lg:w-125 lg:h-125 transform transition-all
           duration-500 hover:scale-105 rounded-full object-cover"
