@@ -171,7 +171,7 @@
             データベース・<br class="hidden lg:block">インフラ...
           </span>
           <p class="w-full lg:w-[1220px]">
-            GraphQL, PostgreSQL, A5:SQL Mk-2, DBeaver, Azure（DevOps Services, Front Door, SQL Database,
+            GraphQL, PostgreSQL, SQL Server, A5:SQL Mk-2, DBeaver, Azure（DevOps Services, Front Door, SQL Database,
             Virtual Machines, Container Registry, Kubernetes Services, Functions）, AWS（Lambda, Cloud Watch,
             S3, Cloudfront, API Gateway, RDS, DynamoDB）, GitOps, GitHub, Grafana, Google Analytics
           </p>
