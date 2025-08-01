@@ -24,7 +24,7 @@
       <div
         ref="profileTextSection"
         class="flex flex-col py-8 lg:py-25 w-full lg:w-240 order-1 lg:order-2 opacity-0 transition-all
-        duration-1000 ease-out transform translate-x-[30px]"
+        duration-1000 ease-out transform"
         :class="{ 'opacity-100 translate-x-0': isProfileTextVisible }"
       >
         <div class="text-2xl sm:text-3xl lg:text-[40px] opacity-0 animate-name-fade text-center lg:text-left">
@@ -77,7 +77,7 @@
         ref="importantContentSection"
         class="flex flex-col w-full lg:w-[1438px] leading-[1.67] tracking-[2px] lg:tracking-[4px] pr-0 lg:pr-16
         text-base sm:text-lg lg:text-[20px] opacity-0 transition-all
-        duration-1000 ease-out transform translate-x-[-30px]"
+        duration-1000 ease-out transform"
         :class="{ 'opacity-100 translate-x-0': isImportantContentVisible }"
       >
         <div class="font-bold mb-6">
@@ -147,7 +147,7 @@
         ref="techContentSection"
         class="flex flex-col w-full lg:w-[1438px] pr-0 lg:pr-16 pt-0 lg:pt-4 text-base sm:text-lg lg:text-[20px]
         tracking-[1px] lg:tracking-[2px] opacity-0 transition-all
-        duration-1000 ease-out transform translate-x-[-30px]"
+        duration-1000 ease-out transform"
         :class="{ 'opacity-100 translate-x-0': isTechContentVisible }"
       >
         <div class="flex flex-col lg:flex-row mb-6 lg:mb-8">
