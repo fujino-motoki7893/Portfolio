@@ -89,7 +89,7 @@
     <div
       ref="frontendSection"
       class="flex flex-col lg:flex-row w-full min-h-[400px] lg:h-200 opacity-0 transition-all
-    duration-1000 ease-out transform translate-x-[-50px]"
+    duration-1000 ease-out transform"
       :class="{ 'opacity-100 translate-x-0': isFrontendVisible }"
     >
       <div class="w-full lg:w-auto lg:flex-shrink-0 order-2 lg:order-1 flex justify-center lg:justify-start">
