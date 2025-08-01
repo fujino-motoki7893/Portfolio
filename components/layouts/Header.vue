@@ -36,6 +36,13 @@
           >
             HOME
           </NuxtLink>
+          <NuxtLink
+            to="/gallery"
+            class="hover:text-blue-600 transition-colors whitespace-nowrap"
+            :class="{ 'text-blue-600': $route.path === '/gallery' }"
+          >
+            GALLERY
+          </NuxtLink>
           <div class="w-[1px] h-[20px] md:h-[24px] bg-gray-300" />
           <NuxtLink
             to="/about"
@@ -90,6 +97,22 @@
                 @click="isMenuOpen = false"
               >
                 HOME
+              </NuxtLink>
+              <NuxtLink
+                to="/gallery"
+                :class="[
+                  'block px-4 py-3 transition-colors',
+                  isDarkMode
+                    ? 'text-gray-300 hover:text-blue-400 hover:bg-gray-700'
+                    : 'text-gray-600 hover:text-blue-600 hover:bg-gray-50',
+                  {
+                    'text-blue-400 bg-gray-700': $route.path === '/gallery' && isDarkMode,
+                    'text-blue-600 bg-blue-50': $route.path === '/galley' && !isDarkMode,
+                  },
+                ]"
+                @click="isMenuOpen = false"
+              >
+                GALLERY
               </NuxtLink>
               <NuxtLink
                 to="/about"

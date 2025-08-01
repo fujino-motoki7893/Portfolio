@@ -95,7 +95,7 @@
       <div class="w-full lg:w-auto lg:flex-shrink-0 order-2 lg:order-1 flex justify-center lg:justify-start">
         <NuxtImg
           provider="s3"
-          src="/images/town-cut.png"
+          src="./images/town-cut.png"
           class="w-full h-auto max-w-md sm:max-w-lg md:max-w-xl lg:max-w-[531px] xl:max-w-[600px] object-cover"
         />
       </div>
@@ -146,7 +146,7 @@
       <div class="w-full lg:w-auto lg:flex-shrink-0 order-2 flex justify-center lg:justify-end">
         <NuxtImg
           provider="s3"
-          src="/images/cloud_edit.jpg"
+          src="./images/cloud_edit.jpg"
           class="w-full h-auto max-w-md sm:max-w-lg md:max-w-xl lg:max-w-[531px] xl:max-w-[600px] object-cover"
         />
       </div>
@@ -161,11 +161,11 @@ import { injectDarkMode } from '~/composables/domains/darkMode'
 const { isDarkMode } = injectDarkMode()
 
 const slides = [
-  { src: '/images/argo-archi.png' },
-  { src: '/images/think_fujino_edit.jpg' },
-  { src: 'images/スライド1_調整.PNG' },
-  { src: '/images/argo-archi.png' },
-  { src: '/images/think_fujino_edit.jpg' },
+  { src: './images/argo-archi.png' },
+  { src: './images/think_fujino_edit.jpg' },
+  { src: './images/スライド1_調整.PNG' },
+  { src: './images/argo-archi.png' },
+  { src: './images/think_fujino_edit.jpg' },
 ]
 
 const textSection = ref(null)
