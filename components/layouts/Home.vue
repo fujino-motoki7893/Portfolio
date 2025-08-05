@@ -155,7 +155,6 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted, onUnmounted } from 'vue'
 import { injectDarkMode } from '~/composables/domains/darkMode'
 
 const { isDarkMode } = injectDarkMode()
@@ -180,15 +179,15 @@ const slideContainer = ref(null)
 const currentSlide = ref(1)
 const totalSlides = 3
 const totalSlidesWithClones = 5
-let slideInterval = null
-let isTransitioning = false
+const slideInterval = ref(null)
+const isTransitioning = ref(false)
 
-const goToSlide = (targetIndex) => {
-  if (isTransitioning) return
+const goToSlide = (targetIndex: number) => {
+  if (isTransitioning.value) return
 
   stopSlideshow()
 
-  isTransitioning = true
+  isTransitioning.value = true
   currentSlide.value = targetIndex + 1
 
   setTimeout(() => {
@@ -203,7 +202,7 @@ const getIndicatorIndex = () => {
 }
 
 const handleTransitionEnd = () => {
-  if (!isTransitioning) return
+  if (!isTransitioning.value) return
 
   if (currentSlide.value === totalSlidesWithClones - 1) {
     slideContainer.value.style.transition = 'none'
@@ -220,26 +219,26 @@ const handleTransitionEnd = () => {
     })
   }
 
-  isTransitioning = false
+  isTransitioning.value = false
 }
 
 const nextSlide = () => {
-  if (isTransitioning) return
+  if (isTransitioning.value) return
 
-  isTransitioning = true
+  isTransitioning.value = true
   currentSlide.value++
 }
 
 const startSlideshow = () => {
-  slideInterval = setInterval(() => {
+  slideInterval.value = setInterval(() => {
     nextSlide()
   }, 3000)
 }
 
 const stopSlideshow = () => {
-  if (slideInterval) {
+  if (slideInterval.value) {
     clearInterval(slideInterval)
-    slideInterval = null
+    slideInterval.value = null
   }
 }
 
