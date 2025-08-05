@@ -97,7 +97,6 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted, onUnmounted } from 'vue'
 import { injectDarkMode } from '~/composables/domains/darkMode'
 
 const { isDarkMode } = injectDarkMode()
