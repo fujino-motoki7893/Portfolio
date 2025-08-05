@@ -184,7 +184,6 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted, onUnmounted } from 'vue'
 import {
   MessageSquare,
   UserRound,
@@ -213,10 +212,10 @@ const observerOptions = {
   rootMargin: '0px 0px -50px 0px',
 }
 
-let observer = null
+const observer = ref<IntersectionObserver | null>(null)
 
 onMounted(() => {
-  observer = new IntersectionObserver((entries) => {
+  observer.value = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
       if (entry.isIntersecting) {
         if (entry.target === profileImageSection.value) {
@@ -241,17 +240,17 @@ onMounted(() => {
     })
   }, observerOptions)
 
-  if (profileImageSection.value) observer.observe(profileImageSection.value)
-  if (profileTextSection.value) observer.observe(profileTextSection.value)
-  if (importantTitleSection.value) observer.observe(importantTitleSection.value)
-  if (importantContentSection.value) observer.observe(importantContentSection.value)
-  if (techTitleSection.value) observer.observe(techTitleSection.value)
-  if (techContentSection.value) observer.observe(techContentSection.value)
+  if (profileImageSection.value) observer.value.observe(profileImageSection.value)
+  if (profileTextSection.value) observer.value.observe(profileTextSection.value)
+  if (importantTitleSection.value) observer.value.observe(importantTitleSection.value)
+  if (importantContentSection.value) observer.value.observe(importantContentSection.value)
+  if (techTitleSection.value) observer.value.observe(techTitleSection.value)
+  if (techContentSection.value) observer.value.observe(techContentSection.value)
 })
 
 onUnmounted(() => {
-  if (observer) {
-    observer.disconnect()
+  if (observer.value) {
+    observer.value.disconnect()
   }
 })
 </script>
