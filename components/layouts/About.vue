@@ -164,8 +164,7 @@
             バックエンド...
           </span>
           <p class="w-full lg:w-[1220px]">
-            C#, ASP.NET Core, GraphQL, REST, Swagger, Nitro, クリーンアーキテクチャ, Repository pattern, Jet Brains Rider,
-            Java（C#との親和性が高いことから、Spring Boot を用いて学習中）
+            C#, ASP.NET Core, GraphQL, REST, Swagger, Nitro, クリーンアーキテクチャ, Repository pattern, Jet Brains Rider
           </p>
         </div>
         <div class="flex flex-col lg:flex-row mb-6 lg:mb-8">
