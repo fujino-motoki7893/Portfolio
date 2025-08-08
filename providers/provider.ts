@@ -4,9 +4,8 @@ import type { ProviderGetImage } from '@nuxt/image'
 export const getImage: ProviderGetImage = (src, { modifiers, baseURL } = {}) => {
   const { width, height, format, quality } = modifiers || {}
 
-  // S3の直接URL生成
   if (!baseURL) {
-    throw new Error('S3 baseURL is required')
+    throw new Error('baseURL is required')
   }
 
   // パラメータを使用した画像最適化（CloudFrontやImageKitを使用する場合）
