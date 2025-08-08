@@ -3,17 +3,35 @@
  *
  * @returns ダークモードの状態と操作メソッドを含むオブジェクト
  */
-const useDarkModeState = () => {
-  const isDarkMode = ref(false)
+export const useDarkMode = () => {
+  const isDarkMode = useState('darkMode', () => false)
+
+  const toggleDarkMode = () => {
+    isDarkMode.value = !isDarkMode.value
+    if (import.meta.client) {
+      localStorage.setItem('darkMode', isDarkMode.value.toString())
+    }
+  }
+
+  const initializeDarkMode = () => {
+    if (import.meta.client) {
+      const saved = localStorage.getItem('darkMode')
+      if (saved !== null) {
+        isDarkMode.value = saved === 'true'
+      }
+    }
+  }
 
   return {
-    isDarkMode,
+    isDarkMode: readonly(isDarkMode),
+    toggleDarkMode,
+    initializeDarkMode,
   }
 }
 
-/** useDarkModeState */
-const useDarkModeStateKey: InjectionKey<ReturnType<typeof useDarkModeState>>
-  = Symbol('useDarkModeStateKey')
+export const injectDarkMode = () => {
+  return useDarkMode()
+}
 
 /**
  * ダークモードの状態をprovideする関数
@@ -24,22 +42,7 @@ const useDarkModeStateKey: InjectionKey<ReturnType<typeof useDarkModeState>>
  * const darkModeState = provideDarkMode();
  */
 export const provideDarkMode = () => {
-  const state = useDarkModeState()
-  provide(useDarkModeStateKey, state)
-  return state
-}
-
-/**
- * ダークモードの状態をinjectする関数
- *
- * @returns useDarkModeState関数の戻り値
- * @throws {Error} useDarkModeStateKeyがprovideされていない場合
- * @example
- * // 子コンポーネントのsetup内で状態をinject
- * const { idDarkMode } = injectDarkMode();
- */
-export const injectDarkMode = () => {
-  const state = inject(useDarkModeStateKey)
-  if (!state) throw new Error('No DarkMode Key')
-  return state
+  const darkMode = useDarkMode()
+  provide('darkMode', darkMode)
+  return darkMode
 }

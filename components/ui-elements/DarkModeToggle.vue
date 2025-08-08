@@ -17,18 +17,22 @@
       type="checkbox"
       class="hidden"
       :checked="modelValue"
-      @change="$emit('update:modelValue', $event.target.checked)"
+      @change="$emit('update:modelValue', $event.target.checked), toggleDarkMode()"
     >
   </label>
 </template>
 
 <script setup>
+import { injectDarkMode } from '~/composables/domains/darkMode'
+
 defineProps({
   modelValue: {
     type: Boolean,
     default: false,
   },
 })
+
+const { toggleDarkMode } = injectDarkMode()
 
 defineEmits(['update:modelValue'])
 </script>
