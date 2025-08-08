@@ -9,7 +9,6 @@
       <div class="col-span-12 grid place-items-center">
         <div class="relative w-full max-w-7xl">
           <NuxtImg
-            provider="s3"
             src="./images/スライド1_調整.PNG"
             class="w-full aspect-[1280/634] object-cover opacity-0 animate-fade-in rounded-lg shadow-lg"
           />
@@ -53,7 +52,6 @@
       <div class="col-span-12 grid place-items-center">
         <div class="relative w-full max-w-7xl">
           <NuxtImg
-            provider="s3"
             src="./images/argo-archi.png"
             class="w-full aspect-[1280/634] object-cover opacity-0 animate-fade-in rounded-lg shadow-lg"
           />
