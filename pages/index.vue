@@ -1,18 +1,6 @@
 <template>
   <div>
-    <div>
-      <header>
-        <Header />
-      </header>
-    </div>
-    <div>
-      <Home />
-    </div>
-    <div>
-      <footer>
-        <Footer />
-      </footer>
-    </div>
+    <Home />
   </div>
 </template>
 
