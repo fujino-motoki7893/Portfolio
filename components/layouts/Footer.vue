@@ -1,9 +1,9 @@
 <template>
   <div class="w-full bg-[#595959] text-white font-bold">
-    <div class="hidden lg:grid lg:grid-cols-12 h-92 p-7.5 py-12.5">
+    <div class="hidden lg:grid lg:grid-cols-12 gap-4 h-92 p-7.5 py-12.5">
       <div class="col-span-8 flex flex-col py-8 justify-end">
         <span class="text-[36px]">
-          motokifujino.com  
+          motokifujino.com
         </span>
         <p class="text-[20px] pt-6">
           This site is made by
