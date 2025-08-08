@@ -67,7 +67,7 @@ export default defineNuxtConfig({
     providers: {
       local: {
         name: 'local',
-        provider: '~/providers/s3-provider.ts',
+        provider: '~/providers/provider.ts',
         options: {
           baseURL: '/images',
         },
