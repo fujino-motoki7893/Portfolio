@@ -15,7 +15,7 @@
           ]"
           @click="isMenuOpen = false"
         >
-          motokifujino.com 
+          motokifujino.com
         </NuxtLink>
       </div>
 
