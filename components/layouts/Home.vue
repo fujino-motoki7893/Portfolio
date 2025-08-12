@@ -4,6 +4,30 @@
       isDarkMode ? 'bg-[#1F1F1F] text-white' : '',
     ]"
   >
+    <!-- 手のアニメーション -->
+    <HandScrollAnimationAdvanced />
+
+    <!-- メインコンテンツ -->
+    <div class="min-h-[300vh]">
+      <!-- 十分な高さでスクロール可能にする -->
+      <section class="h-screen bg-blue-100 flex items-center justify-center">
+        <h1 class="text-4xl font-bold">
+          セクション 1
+        </h1>
+      </section>
+
+      <section class="h-screen bg-green-100 flex items-center justify-center">
+        <h1 class="text-4xl font-bold">
+          セクション 2
+        </h1>
+      </section>
+
+      <section class="h-screen bg-purple-100 flex items-center justify-center">
+        <h1 class="text-4xl font-bold">
+          セクション 3
+        </h1>
+      </section>
+    </div>
     <div class="w-full">
       <div class="grid grid-cols-12 gap-4 lg:gap-8 mx-auto px-4 sm:px-6 lg:px-8">
         <div class="col-span-12 lg:col-span-10 lg:col-start-2 xl:col-span-8 xl:col-start-3">
