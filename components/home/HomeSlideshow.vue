@@ -51,19 +51,20 @@
 </template>
 
 <script setup lang="ts">
-// 実際のスライド3枚 + 前後にクローンを配置して無限ループを実現
-// [最後のクローン, スライド1, スライド2, スライド3, 最初のクローン]
+// 実際のスライド4枚 + 前後にクローンを配置して無限ループを実現
+// [最後のクローン, スライド1, スライド2, スライド3, スライド4, 最初のクローン]
 const slides = [
-  { src: './argo-archi.png', alt: 'Argo CD アーキテクチャ' }, // index 0: 最後のスライドのクローン
+  { src: './アーキ.png', alt: 'インフラ設計図' },             // index 0: 最後のスライドのクローン
   { src: './think_fujino_edit.jpg', alt: 'プロフィール' },    // index 1: 実スライド1
   { src: './スライド1_調整.PNG', alt: '技術スタック' },       // index 2: 実スライド2
   { src: './argo-archi.png', alt: 'Argo CD アーキテクチャ' }, // index 3: 実スライド3
-  { src: './think_fujino_edit.jpg', alt: 'プロフィール' },    // index 4: 最初のスライドのクローン
+  { src: './アーキ.png', alt: 'インフラ設計図' },             // index 4: 実スライド4
+  { src: './think_fujino_edit.jpg', alt: 'プロフィール' },    // index 5: 最初のスライドのクローン
 ]
 
 const slideContainer = ref<HTMLElement | null>(null)
 const currentSlide = ref(1)
-const totalSlides = 3
+const totalSlides = 4
 const slideInterval = ref<ReturnType<typeof setInterval> | null>(null)
 const isAnimating = ref(false)
 
