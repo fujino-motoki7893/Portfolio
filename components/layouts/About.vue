@@ -159,7 +159,7 @@
             </span>
             <p class="col-span-12 lg:col-span-9">
               TypeScript, JavaScript, HTML/CSS, Nuxt.js, Vue.js, pnpm, codegen, Tailwind.css, Figma, 単一責任の原則、
-              アトミックデザイン（縛られ過ぎない程度に）
+              アトミックデザイン（縛られ過ぎない程度に）, DRY原則
             </p>
           </div>
           <div class="grid grid-cols-12 gap-4 mb-6 lg:mb-8">
@@ -167,7 +167,7 @@
               バックエンド...
             </span>
             <p class="col-span-12 lg:col-span-9">
-              C#, ASP.NET  Core, GraphQL, REST, Swagger, Nitro, クリーンアーキテクチャ, Repository pattern, Jet Brains Rider
+              C#, ASP.NET  Core, GraphQL, REST, Swagger, Nitro, クリーンアーキテクチャ, Repository pattern, Jet Brains Rider, Node
             </p>
           </div>
           <div class="grid grid-cols-12 gap-4 mb-6 lg:mb-8">
@@ -177,7 +177,8 @@
             <p class="col-span-12 lg:col-span-9">
               GraphQL, PostgreSQL, SQL Server, A5:SQL Mk-2, DBeaver, Azure（DevOps Services, Front Door, SQL Database,
               Virtual Machines, Container Registry, Kubernetes Services, Functions）, AWS（Lambda, Cloud Watch,
-              S3, Cloudfront, API Gateway, RDS, DynamoDB）, GitOps, GitHub, Grafana, Google Analytics
+              S3, Cloudfront, API Gateway, RDS, DynamoDB, ECS, EC2）, GitOps, GitHub, Grafana, Google Analytics,
+              GPT-Image-1
             </p>
           </div>
         </div>
