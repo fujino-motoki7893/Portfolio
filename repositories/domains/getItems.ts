@@ -1,6 +1,6 @@
-import type { Item } from '~/graphql/generated/graphql'
+import type { TodoItemDto } from '~/composables/domains/itemList'
 
-export const mockData: Item[] = [
+export const mockData: TodoItemDto[] = [
   {
     id: 1,
     name: 'Item 1',

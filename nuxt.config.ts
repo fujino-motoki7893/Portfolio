@@ -3,15 +3,11 @@ import tailwindcss from '@tailwindcss/vite'
 
 export default defineNuxtConfig({
   modules: [
-    '@nuxt/content',
     '@nuxt/eslint',
     '@nuxt/fonts',
     '@nuxt/icon',
     '@nuxt/image',
-    '@nuxt/scripts',
-    '@nuxt/test-utils',
     '@nuxt/ui',
-    '@nuxtjs/apollo',
   ],
 
   components: [
@@ -48,12 +44,6 @@ export default defineNuxtConfig({
     ],
     optimizeDeps: {
       include: ['lucide-vue-next'],
-    },
-  },
-
-  apollo: {
-    clients: {
-      default: './graphql/apollo/clients/default.ts',
     },
   },
 

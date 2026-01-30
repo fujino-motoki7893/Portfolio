@@ -1,9 +1,0 @@
-query {
-  get {
-    items {
-      content
-      id
-      name
-    }
-  }
-}
