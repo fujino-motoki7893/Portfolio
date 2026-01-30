@@ -91,6 +91,49 @@
         </div>
       </div>
     </section>
+
+    <section class="grid grid-cols-12 gap-4 px-4 sm:px-6 lg:px-8 py-8 sm:py-12 lg:py-16">
+      <div class="col-span-12 grid place-items-center">
+        <div class="relative w-full max-w-7xl">
+          <NuxtImg
+            src="./アーキ.png"
+            class="w-full aspect-[1280/634] object-cover opacity-0 animate-fade-in rounded-lg shadow-lg"
+          />
+        </div>
+      </div>
+    </section>
+
+    <section
+      ref="thirdSection"
+      class="grid grid-cols-12 gap-4 px-4 sm:px-6 lg:px-8 py-8 sm:py-12 lg:py-16 opacity-0 transition-all
+      duration-1000 ease-out transform translate-y-8"
+      :class="[
+        isThirdVisible ? 'opacity-100 translate-y-0' : '',
+      ]"
+    >
+      <div class="col-span-12 md:col-span-10 md:col-start-2 lg:col-span-8 lg:col-start-3 xl:col-span-6 xl:col-start-4">
+        <div class="grid gap-6">
+          <div class="grid gap-4 text-sm sm:text-base lg:text-lg leading-relaxed">
+            <p>
+              始めてインフラの設計全般を担当した時の設計図です。ウェブ・モバイル両方のアクセスを考慮する必要があり、とても為になりました。詳細はブログを確認してみください。
+            </p>
+          </div>
+          <div class="grid place-items-center">
+            <NuxtLink
+              to="https://tech-blog.cloud-config.jp/2025-12-19-web-and-mobile-infrastructure-design"
+              :class="[
+                'px-6 py-3 rounded-lg font-semibold transition-all duration-300 transform hover:scale-105',
+                isDarkMode
+                  ? 'bg-blue-600 hover:bg-blue-700 text-white'
+                  : 'bg-blue-600 hover:bg-blue-700 text-white',
+              ]"
+            >
+              ブログを見る
+            </NuxtLink>
+          </div>
+        </div>
+      </div>
+    </section>
   </div>
 </template>
 
@@ -101,9 +144,11 @@ const { isDarkMode } = injectDarkMode()
 
 const textSection = ref<HTMLElement | null>(null)
 const archiSection = ref<HTMLElement | null>(null)
+const thirdSection = ref<HTMLElement | null>(null)
 
 const isTextVisible = ref(false)
 const isArchiVisible = ref(false)
+const isThirdVisible = ref(false)
 
 const setupIntersectionObserver = () => {
   const observer = new IntersectionObserver(
@@ -115,6 +160,9 @@ const setupIntersectionObserver = () => {
         else if (entry.target === archiSection.value) {
           isArchiVisible.value = entry.isIntersecting
         }
+        else if (entry.target === thirdSection.value) {
+          isThirdVisible.value = entry.isIntersecting
+        }
       })
     },
     {
@@ -125,6 +173,7 @@ const setupIntersectionObserver = () => {
 
   if (textSection.value) observer.observe(textSection.value)
   if (archiSection.value) observer.observe(archiSection.value)
+  if (thirdSection.value) observer.observe(thirdSection.value)
 
   return observer
 }
