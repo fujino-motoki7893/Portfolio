@@ -1,26 +1,17 @@
-import type { ApiResponse, ApiError } from '~/types/api'
-
 export const useApi = () => {
   const config = useRuntimeConfig()
 
-  const apiCall = async <T>(
+  const get = async <T>(
     endpoint: string,
-    options: {
-      method?: 'GET' | 'POST' | 'PUT' | 'DELETE'
-      body?: any
-      query?: Record<string, any>
-      headers?: Record<string, string>
-    } = {},
+    query?: Record<string, any>,
   ): Promise<T> => {
     try {
-      const response = await $fetch<any>(endpoint, {
+      const response = await $fetch<unknown>(endpoint, {
         baseURL: config.public.apiBase,
-        method: options.method || 'GET',
-        body: options.body,
-        query: options.query,
+        method: 'GET',
+        query,
         headers: {
           'Content-Type': 'application/json',
-          ...options.headers,
         },
         onResponseError({ response }) {
           throw createError({
@@ -32,29 +23,19 @@ export const useApi = () => {
 
       // ApiResponse形式かどうかを判定
       if (response && typeof response === 'object' && 'data' in response) {
-        return response.data as T
+        return (response as { data: T }).data
       }
 
       // 直接データが返される場合
       return response as T
     }
-    catch (error: any) {
+    catch (error: unknown) {
       console.error('API Error:', error)
       throw error
     }
   }
 
   return {
-    get: <T>(endpoint: string, query?: Record<string, any>) =>
-      apiCall<T>(endpoint, { method: 'GET', query }),
-
-    post: <T>(endpoint: string, body?: any) =>
-      apiCall<T>(endpoint, { method: 'POST', body }),
-
-    put: <T>(endpoint: string, body?: any) =>
-      apiCall<T>(endpoint, { method: 'PUT', body }),
-
-    delete: <T>(endpoint: string) =>
-      apiCall<T>(endpoint, { method: 'DELETE' }),
+    get,
   }
 }

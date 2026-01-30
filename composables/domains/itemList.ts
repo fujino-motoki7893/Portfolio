@@ -1,6 +1,25 @@
 import { useApi } from '../useApi'
-import type { ReadTodoPayload, TodoItemDto } from '~/graphql/generated/graphql'
 import { mockData } from '@/repositories/domains/getItems'
+
+/** Todoアイテムの型定義 */
+export interface TodoItemDto {
+  id: number
+  name?: string | null
+  content?: string | null
+  completed?: boolean
+}
+
+/** Todoアイテム一覧取得レスポンスの型定義 */
+export interface ReadTodoPayload {
+  items: TodoItemDto[]
+}
+
+/** 編集機能を持つアイテムの型定義 */
+export interface EditableItem extends TodoItemDto {
+  isEditing: boolean
+  editName: string
+  editContent: string
+}
 
 /**
  * アイテムリストの状態管理を行うコンポジション関数
@@ -24,8 +43,8 @@ const useItemListState = () => {
       itemList.value = response.items
       return response
     }
-    catch (err: any) {
-      error.value = err.message
+    catch (err: unknown) {
+      error.value = err instanceof Error ? err.message : 'Unknown error'
       throw err
     }
     finally {
@@ -37,7 +56,7 @@ const useItemListState = () => {
    * モックデータに編集状態と編集用フィールドを追加したアイテムリスト
    * 各アイテムに isEditing, editName, editContent プロパティを追加
    */
-  const items = ref(mockData.map(item => ({
+  const items = ref<EditableItem[]>(mockData.map(item => ({
     ...item,
     isEditing: false,
     editName: item.name,
@@ -63,12 +82,12 @@ const useItemListState = () => {
   /**
    * アイテムの編集モードを開始する関数
    *
-   * @param {Item} item - 編集を開始するアイテム
+   * @param {EditableItem} item - 編集を開始するアイテム
    * @example
    * // itemの編集モードを開始
    * startEditing(item);
    */
-  const startEditing = (item) => {
+  const startEditing = (item: EditableItem) => {
     // 編集前の値を保存
     item.editName = item.name
     item.editContent = item.content
@@ -78,12 +97,12 @@ const useItemListState = () => {
   /**
    * 編集中のアイテムの変更を保存する関数
    *
-   * @param {Item} item - 保存するアイテム
+   * @param {EditableItem} item - 保存するアイテム
    * @example
    * // 編集中のitemの変更を保存
    * saveEditing(item);
    */
-  const saveEditing = (item) => {
+  const saveEditing = (item: EditableItem) => {
     item.name = item.editName
     item.content = item.editContent
     item.isEditing = false
@@ -92,12 +111,12 @@ const useItemListState = () => {
   /**
    * アイテムの編集をキャンセルする関数
    *
-   * @param {Item} item - 編集をキャンセルするアイテム
+   * @param {EditableItem} item - 編集をキャンセルするアイテム
    * @example
    * // itemの編集をキャンセル
    * cancelEditing(item);
    */
-  const cancelEditing = (item) => {
+  const cancelEditing = (item: EditableItem) => {
     item.isEditing = false
   }
 

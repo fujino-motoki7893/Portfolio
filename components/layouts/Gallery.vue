@@ -10,6 +10,9 @@
         <div class="relative w-full max-w-7xl">
           <NuxtImg
             src="./スライド1_調整.PNG"
+            alt="技術スタック"
+            loading="eager"
+            sizes="(max-width: 1280px) 100vw, 1280px"
             class="w-full aspect-[1280/634] object-cover opacity-0 animate-fade-in rounded-lg shadow-lg"
           />
         </div>
@@ -53,6 +56,9 @@
         <div class="relative w-full max-w-7xl">
           <NuxtImg
             src="./argo-archi.png"
+            alt="Argo CD アーキテクチャ"
+            loading="lazy"
+            sizes="(max-width: 1280px) 100vw, 1280px"
             class="w-full aspect-[1280/634] object-cover opacity-0 animate-fade-in rounded-lg shadow-lg"
           />
         </div>
@@ -97,6 +103,9 @@
         <div class="relative w-full max-w-7xl">
           <NuxtImg
             src="./アーキ.png"
+            alt="インフラ設計図"
+            loading="lazy"
+            sizes="(max-width: 1280px) 100vw, 1280px"
             class="w-full aspect-[1280/634] object-cover opacity-0 animate-fade-in rounded-lg shadow-lg"
           />
         </div>
@@ -139,6 +148,7 @@
 
 <script setup lang="ts">
 import { injectDarkMode } from '~/composables/domains/darkMode'
+import { useIntersectionObserver } from '~/composables/useIntersectionObserver'
 
 const { isDarkMode } = injectDarkMode()
 
@@ -150,41 +160,11 @@ const isTextVisible = ref(false)
 const isArchiVisible = ref(false)
 const isThirdVisible = ref(false)
 
-const setupIntersectionObserver = () => {
-  const observer = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (entry.target === textSection.value) {
-          isTextVisible.value = entry.isIntersecting
-        }
-        else if (entry.target === archiSection.value) {
-          isArchiVisible.value = entry.isIntersecting
-        }
-        else if (entry.target === thirdSection.value) {
-          isThirdVisible.value = entry.isIntersecting
-        }
-      })
-    },
-    {
-      threshold: 0.1,
-      rootMargin: '0px 0px -100px 0px',
-    },
-  )
-
-  if (textSection.value) observer.observe(textSection.value)
-  if (archiSection.value) observer.observe(archiSection.value)
-  if (thirdSection.value) observer.observe(thirdSection.value)
-
-  return observer
-}
-
-onMounted(() => {
-  const observer = setupIntersectionObserver()
-
-  onUnmounted(() => {
-    observer.disconnect()
-  })
-})
+useIntersectionObserver([
+  { element: textSection, isVisible: isTextVisible },
+  { element: archiSection, isVisible: isArchiVisible },
+  { element: thirdSection, isVisible: isThirdVisible },
+])
 </script>
 
 <style scoped>
