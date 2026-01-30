@@ -7,14 +7,27 @@
         opacity-0 transition-all duration-1000 ease-out transform translate-x-[-30px]"
         :class="{ 'opacity-100 translate-x-0': isImageVisible }"
       >
-        <NuxtImg
-          src="./fujino_ago.jpg"
-          alt="藤野元規"
-          loading="lazy"
-          sizes="(max-width: 640px) 128px, (max-width: 768px) 160px, (max-width: 1024px) 192px, 500px"
-          class="w-32 h-32 sm:w-40 sm:h-40 md:w-48 md:h-48 lg:w-125 lg:h-125
-          transform transition-all duration-500 hover:scale-105 rounded-full object-cover"
-        />
+        <div class="relative">
+          <!-- 装飾リング -->
+          <div
+            class="absolute inset-0 w-32 h-32 sm:w-40 sm:h-40 md:w-48 md:h-48 lg:w-125 lg:h-125
+            rounded-full bg-gradient-to-br from-blue-500 via-purple-500 to-pink-500 animate-spin-slow"
+            style="animation: spin 8s linear infinite;"
+          />
+          <div
+            class="absolute inset-1 w-[calc(100%-8px)] h-[calc(100%-8px)] sm:inset-1.5 sm:w-[calc(100%-12px)] sm:h-[calc(100%-12px)]
+            lg:inset-2 lg:w-[calc(100%-16px)] lg:h-[calc(100%-16px)] rounded-full bg-white dark:bg-[#1F1F1F]"
+          />
+          <NuxtImg
+            src="./fujino_ago.jpg"
+            alt="藤野元規"
+            loading="lazy"
+            sizes="(max-width: 640px) 128px, (max-width: 768px) 160px, (max-width: 1024px) 192px, 500px"
+            class="relative w-32 h-32 sm:w-40 sm:h-40 md:w-48 md:h-48 lg:w-125 lg:h-125
+            transform transition-all duration-500 hover:scale-105 rounded-full object-cover
+            ring-4 ring-white dark:ring-gray-800 shadow-2xl"
+          />
+        </div>
       </div>
 
       <div
@@ -27,13 +40,13 @@
           class="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl opacity-0
         animate-name-fade text-center lg:text-left mb-6"
         >
-          藤野 元規
-          <span class="block sm:inline p-2 sm:p-4">
-            MOTOKI
+          <span class="font-bold bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent">
+            藤野 元規
           </span>
-          <span class="block sm:inline">
-            FUJINO
-          </span>
+          <div class="text-lg sm:text-xl lg:text-2xl text-gray-500 dark:text-gray-400 mt-2 tracking-widest">
+            <span class="inline-block">MOTOKI</span>
+            <span class="inline-block ml-2">FUJINO</span>
+          </div>
         </div>
         <div class="text-sm sm:text-base lg:text-lg xl:text-xl leading-[1.67] tracking-[2px] lg:tracking-[4px]">
           <p class="mb-4">
@@ -93,5 +106,14 @@ useIntersectionObserver(
 
 .animate-name-fade {
   animation: fadeInUp 0.8s ease-out 0.3s forwards;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }
 </style>

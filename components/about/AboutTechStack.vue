@@ -13,38 +13,76 @@
 
       <div
         ref="contentSection"
-        class="col-span-12 lg:col-span-9 text-base sm:text-lg lg:text-xl
-        tracking-[1px] lg:tracking-[2px] opacity-0 transition-all
+        class="col-span-12 lg:col-span-9 opacity-0 transition-all
         duration-1000 ease-out transform"
         :class="{ 'opacity-100 translate-x-0': isContentVisible }"
       >
-        <div class="grid grid-cols-12 gap-4 mb-6 lg:mb-8">
-          <span class="col-span-12 lg:col-span-3 font-bold text-lg sm:text-xl lg:text-2xl mb-2 lg:mb-0">
-            フロントエンド...
-          </span>
-          <p class="col-span-12 lg:col-span-9">
-            TypeScript, JavaScript, HTML/CSS, Nuxt.js, Vue.js, pnpm, codegen, Tailwind.css, Figma, 単一責任の原則、
-            アトミックデザイン（縛られ過ぎない程度に）, DRY原則
-          </p>
-        </div>
-        <div class="grid grid-cols-12 gap-4 mb-6 lg:mb-8">
-          <span class="col-span-12 lg:col-span-3 font-bold text-lg sm:text-xl lg:text-2xl mb-2 lg:mb-0">
-            バックエンド...
-          </span>
-          <p class="col-span-12 lg:col-span-9">
-            C#, ASP.NET  Core, GraphQL, REST, Swagger, Nitro, クリーンアーキテクチャ, Repository pattern, Jet Brains Rider, Node
-          </p>
-        </div>
-        <div class="grid grid-cols-12 gap-4 mb-6 lg:mb-8">
-          <span class="col-span-12 lg:col-span-3 font-bold text-lg sm:text-xl lg:text-2xl mb-2 lg:mb-0">
-            データベース・<br class="hidden lg:block">インフラ...
-          </span>
-          <p class="col-span-12 lg:col-span-9">
-            GraphQL, PostgreSQL, SQL Server, A5:SQL Mk-2, DBeaver, Azure（DevOps Services, Front Door, SQL Database,
-            Virtual Machines, Container Registry, Kubernetes Services, Functions）, AWS（Lambda, Cloud Watch,
-            S3, Cloudfront, API Gateway, RDS, DynamoDB, ECS, EC2）, GitOps, GitHub, Grafana, Google Analytics,
-            GPT-Image-1
-          </p>
+        <div class="grid gap-6">
+          <!-- フロントエンド -->
+          <div class="group">
+            <div class="flex items-center gap-3 mb-4">
+              <div class="w-10 h-10 rounded-lg bg-gradient-to-br from-cyan-500 to-blue-600 flex items-center justify-center">
+                <Monitor :size="20" class="text-white" />
+              </div>
+              <h3 class="text-lg sm:text-xl font-bold text-gray-800 dark:text-gray-200">
+                フロントエンド
+              </h3>
+            </div>
+            <div class="flex flex-wrap gap-2">
+              <span
+                v-for="tech in frontendTechs"
+                :key="tech"
+                class="px-3 py-1.5 text-sm rounded-full bg-cyan-100 dark:bg-cyan-900/30 text-cyan-800 dark:text-cyan-300
+                border border-cyan-200 dark:border-cyan-800 hover:scale-105 transition-transform cursor-default"
+              >
+                {{ tech }}
+              </span>
+            </div>
+          </div>
+
+          <!-- バックエンド -->
+          <div class="group">
+            <div class="flex items-center gap-3 mb-4">
+              <div class="w-10 h-10 rounded-lg bg-gradient-to-br from-green-500 to-emerald-600 flex items-center justify-center">
+                <Server :size="20" class="text-white" />
+              </div>
+              <h3 class="text-lg sm:text-xl font-bold text-gray-800 dark:text-gray-200">
+                バックエンド
+              </h3>
+            </div>
+            <div class="flex flex-wrap gap-2">
+              <span
+                v-for="tech in backendTechs"
+                :key="tech"
+                class="px-3 py-1.5 text-sm rounded-full bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-300
+                border border-green-200 dark:border-green-800 hover:scale-105 transition-transform cursor-default"
+              >
+                {{ tech }}
+              </span>
+            </div>
+          </div>
+
+          <!-- データベース・インフラ -->
+          <div class="group">
+            <div class="flex items-center gap-3 mb-4">
+              <div class="w-10 h-10 rounded-lg bg-gradient-to-br from-purple-500 to-violet-600 flex items-center justify-center">
+                <Cloud :size="20" class="text-white" />
+              </div>
+              <h3 class="text-lg sm:text-xl font-bold text-gray-800 dark:text-gray-200">
+                データベース・インフラ
+              </h3>
+            </div>
+            <div class="flex flex-wrap gap-2">
+              <span
+                v-for="tech in infraTechs"
+                :key="tech"
+                class="px-3 py-1.5 text-sm rounded-full bg-purple-100 dark:bg-purple-900/30 text-purple-800 dark:text-purple-300
+                border border-purple-200 dark:border-purple-800 hover:scale-105 transition-transform cursor-default"
+              >
+                {{ tech }}
+              </span>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -52,7 +90,63 @@
 </template>
 
 <script setup lang="ts">
+import { Monitor, Server, Cloud } from 'lucide-vue-next'
 import { useIntersectionObserver } from '~/composables/useIntersectionObserver'
+
+const frontendTechs = [
+  'TypeScript',
+  'JavaScript',
+  'HTML/CSS',
+  'Nuxt.js',
+  'Vue.js',
+  'pnpm',
+  'codegen',
+  'Tailwind CSS',
+  'Figma',
+  '単一責任の原則',
+  'アトミックデザイン',
+  'DRY原則',
+]
+
+const backendTechs = [
+  'C#',
+  'ASP.NET Core',
+  'GraphQL',
+  'REST',
+  'Swagger',
+  'Nitro',
+  'クリーンアーキテクチャ',
+  'Repository pattern',
+  'JetBrains Rider',
+  'Node.js',
+]
+
+const infraTechs = [
+  'PostgreSQL',
+  'SQL Server',
+  'A5:SQL Mk-2',
+  'DBeaver',
+  'Azure DevOps',
+  'Azure Front Door',
+  'Azure SQL Database',
+  'Azure VMs',
+  'Azure Container Registry',
+  'Azure Kubernetes',
+  'Azure Functions',
+  'AWS Lambda',
+  'CloudWatch',
+  'S3',
+  'CloudFront',
+  'API Gateway',
+  'RDS',
+  'DynamoDB',
+  'ECS',
+  'EC2',
+  'GitOps',
+  'GitHub',
+  'Grafana',
+  'Google Analytics',
+]
 
 const titleSection = ref<HTMLElement | null>(null)
 const contentSection = ref<HTMLElement | null>(null)
