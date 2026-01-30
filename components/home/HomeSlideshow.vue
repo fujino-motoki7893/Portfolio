@@ -51,74 +51,73 @@
 </template>
 
 <script setup lang="ts">
+// 実際のスライド3枚 + 前後にクローンを配置して無限ループを実現
+// [最後のクローン, スライド1, スライド2, スライド3, 最初のクローン]
 const slides = [
-  { src: './argo-archi.png', alt: 'Argo CD アーキテクチャ' },
-  { src: './think_fujino_edit.jpg', alt: 'プロフィール' },
-  { src: './スライド1_調整.PNG', alt: '技術スタック' },
-  { src: './argo-archi.png', alt: 'Argo CD アーキテクチャ' },
-  { src: './think_fujino_edit.jpg', alt: 'プロフィール' },
+  { src: './argo-archi.png', alt: 'Argo CD アーキテクチャ' }, // index 0: 最後のスライドのクローン
+  { src: './think_fujino_edit.jpg', alt: 'プロフィール' },    // index 1: 実スライド1
+  { src: './スライド1_調整.PNG', alt: '技術スタック' },       // index 2: 実スライド2
+  { src: './argo-archi.png', alt: 'Argo CD アーキテクチャ' }, // index 3: 実スライド3
+  { src: './think_fujino_edit.jpg', alt: 'プロフィール' },    // index 4: 最初のスライドのクローン
 ]
 
 const slideContainer = ref<HTMLElement | null>(null)
 const currentSlide = ref(1)
 const totalSlides = 3
-const totalSlidesWithClones = 5
 const slideInterval = ref<ReturnType<typeof setInterval> | null>(null)
-const isTransitioning = ref(false)
+const isAnimating = ref(false)
+
+const TRANSITION_DURATION = 1000
 
 const goToSlide = (targetIndex: number) => {
-  if (isTransitioning.value) return
+  if (isAnimating.value) return
 
   stopSlideshow()
-
-  isTransitioning.value = true
+  isAnimating.value = true
   currentSlide.value = targetIndex + 1
 
   setTimeout(() => {
+    isAnimating.value = false
     startSlideshow()
-  }, 3000)
+  }, TRANSITION_DURATION + 100)
 }
 
 const getIndicatorIndex = () => {
-  if (currentSlide.value === 0) return 2
-  if (currentSlide.value === 4) return 0
+  if (currentSlide.value === 0) return totalSlides - 1
+  if (currentSlide.value === totalSlides + 1) return 0
   return currentSlide.value - 1
 }
 
-const handleTransitionEnd = () => {
-  if (!isTransitioning.value) return
-
-  if (currentSlide.value === totalSlidesWithClones - 1) {
-    if (slideContainer.value) {
-      slideContainer.value.style.transition = 'none'
-      currentSlide.value = 1
-      nextTick(() => {
-        if (slideContainer.value) {
-          slideContainer.value.style.transition = 'transform 1000ms ease-in-out'
-        }
-      })
-    }
-  }
-  else if (currentSlide.value === 0) {
-    if (slideContainer.value) {
-      slideContainer.value.style.transition = 'none'
-      currentSlide.value = totalSlides
-      nextTick(() => {
-        if (slideContainer.value) {
-          slideContainer.value.style.transition = 'transform 1000ms ease-in-out'
-        }
-      })
-    }
-  }
-
-  isTransitioning.value = false
-}
-
 const nextSlide = () => {
-  if (isTransitioning.value) return
+  if (isAnimating.value) return
 
-  isTransitioning.value = true
+  isAnimating.value = true
   currentSlide.value++
+
+  // クローンスライド（index 4）に到達したら、アニメーション完了後に実スライド1（index 1）へジャンプ
+  if (currentSlide.value === totalSlides + 1) {
+    setTimeout(() => {
+      if (slideContainer.value) {
+        // トランジションを一時的に無効化して瞬時にジャンプ
+        slideContainer.value.style.transition = 'none'
+        currentSlide.value = 1
+
+        // 次のフレームでトランジションを復元
+        requestAnimationFrame(() => {
+          requestAnimationFrame(() => {
+            if (slideContainer.value) {
+              slideContainer.value.style.transition = `transform ${TRANSITION_DURATION}ms ease-in-out`
+            }
+            isAnimating.value = false
+          })
+        })
+      }
+    }, TRANSITION_DURATION)
+  } else {
+    setTimeout(() => {
+      isAnimating.value = false
+    }, TRANSITION_DURATION)
+  }
 }
 
 const startSlideshow = () => {
@@ -135,18 +134,11 @@ const stopSlideshow = () => {
 }
 
 onMounted(() => {
-  if (slideContainer.value) {
-    slideContainer.value.addEventListener('transitionend', handleTransitionEnd)
-  }
-
   startSlideshow()
+})
 
-  onUnmounted(() => {
-    stopSlideshow()
-    if (slideContainer.value) {
-      slideContainer.value.removeEventListener('transitionend', handleTransitionEnd)
-    }
-  })
+onUnmounted(() => {
+  stopSlideshow()
 })
 </script>
 
