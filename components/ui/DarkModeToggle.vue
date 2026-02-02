@@ -17,7 +17,7 @@
       type="checkbox"
       class="hidden"
       :checked="modelValue"
-      @change="$emit('update:modelValue', $event.target.checked), toggleDarkMode()"
+      @change="toggleDarkMode()"
     >
   </label>
 </template>

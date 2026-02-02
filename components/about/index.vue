@@ -8,6 +8,10 @@
 
     <div class="py-8 lg:py-16" />
 
+    <AboutTimeline />
+
+    <div class="py-8 lg:py-16" />
+
     <AboutImportant />
 
     <div class="py-8 lg:py-16" />
