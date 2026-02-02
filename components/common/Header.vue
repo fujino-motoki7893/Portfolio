@@ -23,7 +23,7 @@
         <nav class="flex items-center space-x-3 sm:space-x-4">
           <div class="flex items-center">
             <DarkModeToggle
-              v-model="isDarkMode"
+              :model-value="isDarkMode"
               class="scale-75 sm:scale-90 md:scale-100"
             />
           </div>

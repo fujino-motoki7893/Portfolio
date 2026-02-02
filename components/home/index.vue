@@ -6,7 +6,7 @@
   >
     <HomeSlideshow />
     <HomeIntroduction />
-    <HomeFrontend />
+    <HomeAiCoding />
     <HomeCloud />
   </div>
 </template>
