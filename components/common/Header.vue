@@ -46,6 +46,13 @@
             >
               GALLERY
             </NuxtLink>
+            <NuxtLink
+              to="/tech"
+              class="hover:text-blue-600 transition-colors whitespace-nowrap"
+              :class="{ 'text-blue-600': $route.path.startsWith('/tech') }"
+            >
+              TECH
+            </NuxtLink>
             <div class="w-[1px] h-[20px] md:h-[24px] bg-gray-300" />
             <NuxtLink
               to="/about"
@@ -117,6 +124,22 @@
                   @click="isMenuOpen = false"
                 >
                   GALLERY
+                </NuxtLink>
+                <NuxtLink
+                  to="/tech"
+                  :class="[
+                    'block px-4 py-3 transition-colors',
+                    isDarkMode
+                      ? 'text-gray-300 hover:text-blue-400 hover:bg-gray-700'
+                      : 'text-gray-600 hover:text-blue-600 hover:bg-gray-50',
+                    {
+                      'text-blue-400 bg-gray-700': $route.path.startsWith('/tech') && isDarkMode,
+                      'text-blue-600 bg-blue-50': $route.path.startsWith('/tech') && !isDarkMode,
+                    },
+                  ]"
+                  @click="isMenuOpen = false"
+                >
+                  TECH
                 </NuxtLink>
                 <NuxtLink
                   to="/about"

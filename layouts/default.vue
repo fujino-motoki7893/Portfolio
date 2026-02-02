@@ -1,7 +1,12 @@
 <template>
-  <div :class="{ dark: isDarkMode }">
+  <div
+    :class="{ dark: isDarkMode }"
+    class="min-h-screen flex flex-col"
+  >
     <Header />
-    <slot />
+    <main class="flex-1 flex flex-col">
+      <slot />
+    </main>
     <Footer />
   </div>
 </template>
