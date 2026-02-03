@@ -56,7 +56,7 @@
                     {{ item.title }}
                   </h3>
                 </div>
-                <p class="text-sm sm:text-base text-gray-600 dark:text-gray-400 leading-relaxed">
+                <p class="text-sm sm:text-base text-gray-800 dark:text-gray-400 leading-relaxed">
                   {{ item.description }}
                 </p>
               </div>
