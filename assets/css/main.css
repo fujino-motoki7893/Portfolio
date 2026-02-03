@@ -11,3 +11,117 @@
 .dark {
   color-scheme: dark;
 }
+
+/* Prose スタイル（Typography） */
+.prose {
+  color: var(--tw-prose-body, #374151);
+  max-width: 65ch;
+  line-height: 1.75;
+}
+
+.prose h2 {
+  color: var(--tw-prose-headings, #111827);
+  font-weight: 700;
+  font-size: 1.5em;
+  margin-top: 2em;
+  margin-bottom: 1em;
+  line-height: 1.33;
+  border-bottom: 1px solid #e5e7eb;
+  padding-bottom: 0.3em;
+}
+
+.prose h3 {
+  color: var(--tw-prose-headings, #111827);
+  font-weight: 600;
+  font-size: 1.25em;
+  margin-top: 1.6em;
+  margin-bottom: 0.6em;
+  line-height: 1.6;
+}
+
+.prose p {
+  margin-top: 1.25em;
+  margin-bottom: 1.25em;
+}
+
+.prose code {
+  color: var(--tw-prose-code, #111827);
+  font-weight: 600;
+  font-size: 0.875em;
+  background-color: #f3f4f6;
+  padding: 0.2em 0.4em;
+  border-radius: 0.25rem;
+}
+
+.prose code::before,
+.prose code::after {
+  content: none;
+}
+
+.prose pre {
+  color: var(--tw-prose-pre-code, #e5e7eb);
+  background-color: var(--tw-prose-pre-bg, #1f2937);
+  overflow-x: auto;
+  font-weight: 400;
+  font-size: 0.875em;
+  line-height: 1.71;
+  margin-top: 1.71em;
+  margin-bottom: 1.71em;
+  border-radius: 0.375rem;
+  padding: 0.86em 1.14em;
+}
+
+.prose pre code {
+  background-color: transparent;
+  border-width: 0;
+  border-radius: 0;
+  padding: 0;
+  font-weight: inherit;
+  color: inherit;
+  font-size: inherit;
+  line-height: inherit;
+}
+
+.prose ul {
+  list-style-type: disc;
+  margin-top: 1.25em;
+  margin-bottom: 1.25em;
+  padding-left: 1.625em;
+}
+
+.prose ol {
+  list-style-type: decimal;
+  margin-top: 1.25em;
+  margin-bottom: 1.25em;
+  padding-left: 1.625em;
+}
+
+.prose li {
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+}
+
+/* ダークモード用 Prose スタイル */
+.prose-invert {
+  --tw-prose-body: #d1d5db;
+  --tw-prose-headings: #fff;
+  --tw-prose-code: #fff;
+  --tw-prose-pre-code: #e5e7eb;
+  --tw-prose-pre-bg: #0d1117;
+}
+
+.prose-invert code {
+  background-color: #374151;
+}
+
+.prose-invert h2 {
+  border-bottom-color: #374151;
+}
+
+/* 画像スタイル */
+.prose img {
+  margin-top: 2em;
+  margin-bottom: 2em;
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+}
