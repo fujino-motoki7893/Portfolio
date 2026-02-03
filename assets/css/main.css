@@ -1,3 +1,12 @@
 @import "tailwindcss";
 
-@custom-variant dark (&:where(.dark, .dark *));
+@variant dark (&:is(.dark *));
+
+/* システムのダークモード設定を無視し、.darkクラスのみで制御 */
+:root {
+  color-scheme: light;
+}
+
+.dark {
+  color-scheme: dark;
+}

@@ -11,6 +11,13 @@ export default defineNuxtConfig({
     '@nuxt/ui',
   ],
 
+  colorMode: {
+    classSuffix: '',
+    preference: 'light',
+    fallback: 'light',
+    storageKey: 'darkMode',
+  },
+
   components: [
     {
       path: '~/components',
