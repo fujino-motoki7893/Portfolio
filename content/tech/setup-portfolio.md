@@ -1,5 +1,5 @@
 ---
-title: NuxtでPortfolioを作成する（作成中）
+title: NuxtでPortfolioを作成する
 description: 技術選定にて考慮したことを解説します
 date: 2026-02-03
 tags:
@@ -12,123 +12,39 @@ tags:
 
 本Portfolioを構築するにあたって、どのようにアーキテクチャを選定したか解説していきます。
 
-## 技術選定
+## フロントエンド
 
-### フロントエンド
+### 使用言語
 
-すべてのプロパティをオプショナルにします。
+フロントエンドの技術を選定するにあたって、慣れ親しんだ`TS/HTML/CSS`で開発することにしました。今となってはAIコーディングを前提として別言語で書いてみてもいいかもなー、とも思ったのですが、またの機会にします。
 
-```typescript
-interface User {
-  id: number
-  name: string
-  email: string
-}
+### フレームワーク
 
-// すべてのプロパティがオプショナルに
-type PartialUser = Partial<User>
+フレームワークは`Nuxt`を利用しています。現在は`Nuxt3`を利用していますが、時間がある時に`Nuxt4`に移行しようと考えています。
 
-// 更新時に一部のプロパティだけ渡せる
-function updateUser(id: number, updates: Partial<User>) {
-  // ...
-}
+## バックエンド・データベース
 
-updateUser(1, { name: '新しい名前' }) // OK
-```
+現状バックエンドは作成していません。強いていうなら画像管理のために、`AWS`の`S3`を利用してURLをデータベースで管理するようにして、そのためのCRUD処理を書いてもいいかな、くらいの感じでしたが、現状パフォーマンス的にも必要ないかな、と感じています。その分追加コストもかかりますしね。今後の画像・ブログテキストを含む用量と追加機能によっては、構築を検討します。
 
-### `Pick<T, K>`
+## インフラストラクチャ
 
-指定したプロパティだけを抽出します。
+### ドメイン
+ドメインの管理には[お名前ドットコム](https://www.onamae.com/)を利用しています。AWSの`Route 53`を採用することも検討しましたが、シンプルに1年間無料だったので前者にしました。1年経過毎に千円程の更新料といくらかの手数料がかかるそうですが、このサイトに必要な維持費は現状それだけです。
 
-```typescript
-interface Article {
-  id: number
-  title: string
-  content: string
-  author: string
-  createdAt: Date
-}
+### デプロイ環境
+デプロイ環境には[GitHub Pages](https://docs.github.com/ja/pages/getting-started-with-github-pages/creating-a-github-pages-site)を利用しています。選定理由はデプロイが簡単なのとシンプルに無料だからです。これを利用するならお名前ドットコムでドメインを維持する必要ないか？と思われるかもしれませんが、単純に「motokifujino.com」を入力するだけで自分のサイトを閲覧できるのは便利だからです。
+今後の展望によっては、`AWS`の`ECR・ECS`を利用することも考慮していいかもしれません。
 
-// titleとauthorだけを持つ型
-type ArticlePreview = Pick<Article, 'title' | 'author'>
+### CI/CD
+CI/CDは[Github Actions](https://github.co.jp/features/actions)を利用しています。こちらも無料なので、もし仮に他のリソースをパブリッククラウドに移行しても、自分はこれの利用を続けると思います。
 
-const preview: ArticlePreview = {
-  title: 'TypeScript入門',
-  author: 'John'
-}
-```
-
-### `Omit<T, K>`
-
-指定したプロパティを除外します。
-
-```typescript
-// idとcreatedAtを除外した型（新規作成時に便利）
-type CreateArticleInput = Omit<Article, 'id' | 'createdAt'>
-
-const newArticle: CreateArticleInput = {
-  title: '新しい記事',
-  content: '本文...',
-  author: 'Jane'
-}
-```
-
-### `Record<K, T>`
-
-キーの型と値の型を指定してオブジェクト型を作成します。
-
-```typescript
-type Status = 'pending' | 'approved' | 'rejected'
-
-// 各ステータスに対応するラベルを定義
-const statusLabels: Record<Status, string> = {
-  pending: '審査中',
-  approved: '承認済み',
-  rejected: '却下'
-}
-```
-
-## 実践的な活用例
-
-### APIレスポンスの型定義
-
-```typescript
-interface ApiResponse<T> {
-  data: T
-  status: number
-  message: string
-}
-
-// ユーザー一覧のレスポンス
-type UsersResponse = ApiResponse<User[]>
-
-// 単一ユーザーのレスポンス
-type UserResponse = ApiResponse<User>
-```
-
-### フォームの状態管理
-
-```typescript
-interface FormData {
-  username: string
-  email: string
-  password: string
-}
-
-// フォームの各フィールドにエラーメッセージを持たせる
-type FormErrors = Partial<Record<keyof FormData, string>>
-
-const errors: FormErrors = {
-  email: 'メールアドレスの形式が不正です'
-}
-```
 
 ## まとめ
 
-ユーティリティ型を使うことで：
+技術選定の軸としては：
 
-- **コードの重複を削減**できる
-- **型の意図が明確**になる
-- **保守性が向上**する
+- **自分がやりたい**ように
+- **できるだけ安く**
+- **将来性**を考慮して
 
-最初は難しく感じるかもしれませんが、少しずつ使っていくことで自然と身につきます。
+こんな感じです。他のプロジェクトを始める際も、この観点を忘れずに始められたらと思います。
