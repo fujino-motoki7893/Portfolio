@@ -3,6 +3,7 @@ import tailwindcss from '@tailwindcss/vite'
 
 export default defineNuxtConfig({
   modules: [
+    '@nuxt/content',
     '@nuxt/eslint',
     '@nuxt/fonts',
     '@nuxt/icon',
@@ -17,7 +18,7 @@ export default defineNuxtConfig({
     },
   ],
 
-  devtools: { enabled: true },
+  devtools: { enabled: false },
 
   css: ['~/assets/css/main.css'],
 
