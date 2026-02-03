@@ -24,7 +24,7 @@
               <div class="w-10 h-10 rounded-lg bg-gradient-to-br from-cyan-500 to-blue-600 flex items-center justify-center">
                 <Monitor :size="20" class="text-white" />
               </div>
-              <h3 class="text-lg sm:text-xl font-bold text-gray-800 dark:text-gray-200">
+              <h3 class="text-lg sm:text-xl font-bold text-gray-900 dark:text-gray-200">
                 フロントエンド
               </h3>
             </div>
@@ -32,7 +32,7 @@
               <span
                 v-for="tech in frontendTechs"
                 :key="tech"
-                class="px-3 py-1.5 text-sm rounded-full bg-cyan-100 dark:bg-cyan-900/30 text-cyan-800 dark:text-cyan-300
+                class="px-3 py-1.5 text-sm rounded-full bg-cyan-100 dark:bg-cyan-900/30 text-cyan-900 dark:text-cyan-300
                 border border-cyan-200 dark:border-cyan-800 hover:scale-105 transition-transform cursor-default"
               >
                 {{ tech }}
@@ -46,7 +46,7 @@
               <div class="w-10 h-10 rounded-lg bg-gradient-to-br from-green-500 to-emerald-600 flex items-center justify-center">
                 <Server :size="20" class="text-white" />
               </div>
-              <h3 class="text-lg sm:text-xl font-bold text-gray-800 dark:text-gray-200">
+              <h3 class="text-lg sm:text-xl font-bold text-gray-900 dark:text-gray-200">
                 バックエンド
               </h3>
             </div>
@@ -54,7 +54,7 @@
               <span
                 v-for="tech in backendTechs"
                 :key="tech"
-                class="px-3 py-1.5 text-sm rounded-full bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-300
+                class="px-3 py-1.5 text-sm rounded-full bg-green-100 dark:bg-green-900/30 text-green-900 dark:text-green-300
                 border border-green-200 dark:border-green-800 hover:scale-105 transition-transform cursor-default"
               >
                 {{ tech }}
@@ -68,7 +68,7 @@
               <div class="w-10 h-10 rounded-lg bg-gradient-to-br from-purple-500 to-violet-600 flex items-center justify-center">
                 <Cloud :size="20" class="text-white" />
               </div>
-              <h3 class="text-lg sm:text-xl font-bold text-gray-800 dark:text-gray-200">
+              <h3 class="text-lg sm:text-xl font-bold text-gray-900 dark:text-gray-200">
                 データベース・インフラ
               </h3>
             </div>
@@ -76,7 +76,7 @@
               <span
                 v-for="tech in infraTechs"
                 :key="tech"
-                class="px-3 py-1.5 text-sm rounded-full bg-purple-100 dark:bg-purple-900/30 text-purple-800 dark:text-purple-300
+                class="px-3 py-1.5 text-sm rounded-full bg-purple-100 dark:bg-purple-900/30 text-purple-900 dark:text-purple-300
                 border border-purple-200 dark:border-purple-800 hover:scale-105 transition-transform cursor-default"
               >
                 {{ tech }}
