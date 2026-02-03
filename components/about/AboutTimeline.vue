@@ -41,7 +41,7 @@
 
               <!-- コンテンツ -->
               <div
-                class="group p-4 sm:p-5 rounded-xl bg-white dark:bg-gray-800/50
+                class="group p-4 sm:p-5 rounded-xl bg-white/50 dark:bg-gray-800/50
                 border border-gray-200 dark:border-gray-700
                 hover:shadow-lg transition-all duration-300 hover:-translate-y-1"
               >
@@ -52,11 +52,11 @@
                   >
                     {{ item.year }}
                   </span>
-                  <h3 class="text-base sm:text-lg font-bold text-gray-900 dark:text-gray-200">
+                  <h3 class="text-base sm:text-lg font-bold text-gray-800 dark:text-gray-200">
                     {{ item.title }}
                   </h3>
                 </div>
-                <p class="text-sm sm:text-base text-gray-900 dark:text-gray-400 leading-relaxed">
+                <p class="text-sm sm:text-base text-gray-600 dark:text-gray-400 leading-relaxed">
                   {{ item.description }}
                 </p>
               </div>
