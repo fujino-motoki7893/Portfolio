@@ -1,5 +1,5 @@
 ---
-title: Vue 3 Composition APIの基本
+title: Vue 3 Composition APIの基本（モック）
 description: Vue 3で導入されたComposition APIの基本的な使い方を解説します
 date: 2024-02-01
 tags:

@@ -1,5 +1,5 @@
 ---
-title: Nuxt Contentでブログを構築する
+title: Nuxt Contentでブログを構築する（モック）
 description: Nuxt Contentモジュールを使ってMarkdownベースのブログを作成する方法
 date: 2024-02-02
 tags:
