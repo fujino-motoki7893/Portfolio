@@ -38,6 +38,10 @@ tags:
 ### CI/CD
 CI/CDは[Github Actions](https://github.co.jp/features/actions)を利用しています。こちらも無料なので、もし仮に他のリソースをパブリッククラウドに移行しても、自分はこれの利用を続けると思います。
 
+簡単な全体像です。
+
+![Portfolio全体アーキテクチャ](tech/portfolio-architecture.png)
+
 
 ## まとめ
 
