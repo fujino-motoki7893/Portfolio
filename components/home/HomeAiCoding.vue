@@ -22,7 +22,7 @@
       >
         <div class="w-full text-base sm:text-lg lg:text-xl py-8 lg:py-0 px-6 sm:px-8 lg:px-[172px]">
           <div class="flex font-bold text-xl sm:text-2xl lg:text-[32px] justify-center py-8 lg:py-16">
-            AIコーディング
+            AI駆動開発
           </div>
           <p class="pb-6 lg:pb-10">
             AIを開発プロセスに組み込み、品質と生産性を両立できるエンジニアを目指します。
