@@ -8,7 +8,7 @@
     <div class="container mx-auto px-4 py-12 lg:py-24">
       <div class="text-center mb-12">
         <h1 class="text-3xl lg:text-4xl font-bold mb-4">
-          Tech Blog（開発中）
+          Tech Blog
         </h1>
         <p class="text-gray-600 dark:text-gray-400">
           技術に関する学びや知見を共有します
