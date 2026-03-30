@@ -2,8 +2,7 @@
   <div class="w-full">
     <div class="grid grid-cols-12 gap-4 lg:gap-8 mx-auto px-4 sm:px-6 lg:px-8">
       <div class="col-span-12 lg:col-span-10 lg:col-start-2 xl:col-span-8 xl:col-start-3">
-        <div class="relative overflow-hidden rounded-lg">
-          <HomeParticleBackground :is-dark-mode="isDarkMode" />
+        <div class="relative overflow-hidden">
           <div
             ref="slideContainer"
             class="flex transition-transform duration-1000 ease-in-out"
@@ -52,10 +51,6 @@
 </template>
 
 <script setup lang="ts">
-import { injectDarkMode } from '~/composables/domains/darkMode'
-
-const { isDarkMode } = injectDarkMode()
-
 // 実際のスライド4枚 + 前後にクローンを配置して無限ループを実現
 // [最後のクローン, スライド1, スライド2, スライド3, スライド4, 最初のクローン]
 const slides = [
