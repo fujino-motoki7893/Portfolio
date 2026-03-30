@@ -38,11 +38,12 @@
             v-for="tag in article.tags"
             :key="tag"
             :class="[
-              'px-3 py-1 text-xs rounded-full',
+              'px-3 py-1 text-xs rounded-full cursor-pointer transition-colors',
               isDarkMode
-                ? 'bg-blue-900/50 text-blue-300'
-                : 'bg-blue-100 text-blue-700',
+                ? 'bg-blue-900/50 text-blue-300 hover:bg-blue-900/70'
+                : 'bg-blue-100 text-blue-700 hover:bg-blue-200',
             ]"
+            @click.prevent="emit('tag-click', tag)"
           >
             {{ tag }}
           </span>
@@ -67,6 +68,10 @@ interface Article {
 
 defineProps<{
   article: Article
+}>()
+
+const emit = defineEmits<{
+  'tag-click': [tag: string]
 }>()
 
 const { isDarkMode } = injectDarkMode()
