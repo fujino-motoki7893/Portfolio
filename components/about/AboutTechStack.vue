@@ -144,6 +144,7 @@ const infraTechs = [
   'EC2',
   'GitOps',
   'GitHub',
+  'Render',
   'Grafana',
   'Google Analytics',
 ]
