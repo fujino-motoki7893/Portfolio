@@ -189,6 +189,67 @@
         </div>
       </div>
     </section>
+
+    <section class="grid grid-cols-12 gap-4 px-4 sm:px-6 lg:px-8 py-8 sm:py-12 lg:py-16">
+      <div class="col-span-12 grid place-items-center">
+        <div class="relative w-full max-w-7xl">
+          <NuxtImg
+            src="./game-rpg.png"
+            alt="小さなターンRPG"
+            loading="lazy"
+            sizes="(max-width: 1280px) 100vw, 1280px"
+            class="w-full aspect-[1280/634] object-cover opacity-0 animate-fade-in rounded-lg shadow-lg"
+          />
+        </div>
+      </div>
+    </section>
+
+    <section
+      ref="rpgSection"
+      class="grid grid-cols-12 gap-4 px-4 sm:px-6 lg:px-8 py-8 sm:py-12 lg:py-16 opacity-0 transition-all
+      duration-1000 ease-out transform translate-y-8"
+      :class="[
+        isRpgVisible ? 'opacity-100 translate-y-0' : '',
+      ]"
+    >
+      <div class="col-span-12 md:col-span-10 md:col-start-2 lg:col-span-8 lg:col-start-3 xl:col-span-6 xl:col-start-4">
+        <div class="grid gap-6">
+          <div class="grid gap-4 text-sm sm:text-base lg:text-lg leading-relaxed">
+            <p>
+              王道ファンタジーをテーマにした、ブラウザで遊べるトップダウン型の小さなターンRPGです。村で話を聞き、草原を抜け、ランダム生成される複数階層ダンジョンを探索して秘宝を持ち帰ります。戦闘はターン制で、レベルアップでスキルを覚えたり、道具屋・装備屋で旅支度を整えたりできます。Cloudflare Workers でフロントエンド配信とダンジョン生成APIを動かしています。
+            </p>
+          </div>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 place-items-center">
+            <NuxtLink
+              to="https://game-rpg.rpg-game-fujino-6290.workers.dev/"
+              target="_blank"
+              rel="noopener noreferrer"
+              :class="[
+                'w-full text-center px-6 py-3 rounded-lg font-semibold transition-all duration-300 transform hover:scale-105',
+                isDarkMode
+                  ? 'bg-blue-600 hover:bg-blue-700 text-white'
+                  : 'bg-blue-600 hover:bg-blue-700 text-white',
+              ]"
+            >
+              アプリを見る
+            </NuxtLink>
+            <NuxtLink
+              to="https://github.com/fujino-motoki7893/game-rpg"
+              target="_blank"
+              rel="noopener noreferrer"
+              :class="[
+                'w-full text-center px-6 py-3 rounded-lg font-semibold border transition-all duration-300 transform hover:scale-105',
+                isDarkMode
+                  ? 'border-white text-white hover:bg-white/10'
+                  : 'border-gray-900 text-gray-900 hover:bg-gray-900/10',
+              ]"
+            >
+              GitHubを見る
+            </NuxtLink>
+          </div>
+        </div>
+      </div>
+    </section>
   </div>
 </template>
 
@@ -202,17 +263,20 @@ const textSection = ref<HTMLElement | null>(null)
 const focusTimerSection = ref<HTMLElement | null>(null)
 const archiSection = ref<HTMLElement | null>(null)
 const thirdSection = ref<HTMLElement | null>(null)
+const rpgSection = ref<HTMLElement | null>(null)
 
 const isTextVisible = ref(false)
 const isFocusTimerVisible = ref(false)
 const isArchiVisible = ref(false)
 const isThirdVisible = ref(false)
+const isRpgVisible = ref(false)
 
 useIntersectionObserver([
   { element: textSection, isVisible: isTextVisible },
   { element: focusTimerSection, isVisible: isFocusTimerVisible },
   { element: archiSection, isVisible: isArchiVisible },
   { element: thirdSection, isVisible: isThirdVisible },
+  { element: rpgSection, isVisible: isRpgVisible },
 ])
 </script>
 
