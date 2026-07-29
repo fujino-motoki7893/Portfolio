@@ -20,14 +20,9 @@
             : 'bg-white border-gray-300 text-gray-900 focus:border-blue-400',
         ]"
       >
-    </div>
-    <div>
-      <label class="block text-xs font-medium text-gray-500 mb-1">カラー</label>
-      <input
-        v-model="color"
-        type="color"
-        class="w-16 h-10 rounded border border-gray-300"
-      >
+      <p class="text-xs text-gray-400 mt-1">
+        カラーはtierの並び順に応じて自動で設定されます
+      </p>
     </div>
   </RankFormModal>
 </template>
@@ -43,14 +38,12 @@ const props = defineProps<{
 
 const emits = defineEmits<{
   (e: 'update:modelValue', value: boolean): void
-  (e: 'save', label: string, color: string): void
-  (e: 'delete', id: string): void
+  (e: 'save' | 'delete', value: string): void
 }>()
 
 const { isDarkMode } = injectDarkMode()
 
 const label = ref('')
-const color = ref('#3b82f6')
 
 const isOpenModel = computed({
   get: () => props.modelValue,
@@ -60,12 +53,11 @@ const isOpenModel = computed({
 watch(() => props.modelValue, (open) => {
   if (open) {
     label.value = props.tier?.label ?? ''
-    color.value = props.tier?.color ?? '#3b82f6'
   }
 })
 
 const handleSubmit = () => {
-  emits('save', label.value, color.value)
+  emits('save', label.value)
   isOpenModel.value = false
 }
 

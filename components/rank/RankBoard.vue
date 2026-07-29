@@ -27,7 +27,7 @@
       class="space-y-3"
       @change="handleTierReorder"
     >
-      <template #item="{ element: tier }">
+      <template #item="{ element: tier, index }">
         <div
           :class="[
             'flex rounded-xl border overflow-hidden',
@@ -40,7 +40,7 @@
               'shrink-0 w-16 sm:w-20 flex items-center justify-center font-bold text-white',
               isEditMode ? 'tier-drag-handle cursor-grab' : 'cursor-default',
             ]"
-            :style="{ backgroundColor: tier.color }"
+            :style="{ backgroundColor: getTierColor(index, tiers.length) }"
             @click="isEditMode && openTierForm(tier)"
           >
             {{ tier.label }}
@@ -122,6 +122,7 @@ import type { RankItemRow, RankTierRow, RankTierWithItems } from '~/types/rank'
 import { useRankBoard } from '~/composables/domains/rankData'
 import { useRankAuth } from '~/composables/domains/rankAuth'
 import { injectDarkMode } from '~/composables/domains/darkMode'
+import { getTierColor } from '~/composables/domains/rankTierColor'
 
 const props = defineProps<{
   categoryId: string
@@ -152,12 +153,12 @@ const openTierForm = (tier: RankTierRow | null) => {
   isTierFormOpen.value = true
 }
 
-const handleTierSave = (label: string, color: string) => {
+const handleTierSave = (label: string) => {
   if (editingTier.value) {
-    updateTier(editingTier.value.id, label, color)
+    updateTier(editingTier.value.id, label)
   }
   else {
-    createTier(label, color)
+    createTier(label)
   }
 }
 

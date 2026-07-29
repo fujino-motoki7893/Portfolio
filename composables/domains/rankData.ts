@@ -135,21 +135,20 @@ export const useRankBoard = (categoryId: Ref<string | undefined>) => {
 
   watch(categoryId, fetchBoard, { immediate: true })
 
-  const createTier = async (label: string, color: string) => {
+  const createTier = async (label: string) => {
     if (!supabase || !categoryId.value) return
     const { error } = await supabase.from('rank_tiers').insert({
       category_id: categoryId.value,
       label,
-      color,
       sort_order: tiers.value.length,
     })
     if (error) return reportError(error)
     await fetchBoard()
   }
 
-  const updateTier = async (id: string, label: string, color: string) => {
+  const updateTier = async (id: string, label: string) => {
     if (!supabase) return
-    const { error } = await supabase.from('rank_tiers').update({ label, color }).eq('id', id)
+    const { error } = await supabase.from('rank_tiers').update({ label }).eq('id', id)
     if (error) return reportError(error)
     await fetchBoard()
   }
