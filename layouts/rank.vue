@@ -1,6 +1,9 @@
 <template>
   <div
-    :class="{ dark: isDarkMode }"
+    :class="[
+      { dark: isDarkMode },
+      isDarkMode ? 'bg-[#1F1F1F] text-white' : 'bg-white',
+    ]"
     class="min-h-screen flex flex-col"
   >
     <div
