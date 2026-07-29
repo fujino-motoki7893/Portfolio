@@ -61,6 +61,14 @@
             >
               ABOUT ME
             </NuxtLink>
+            <div class="w-[1px] h-[20px] md:h-[24px] bg-gray-300" />
+            <button
+              class="hover:text-blue-600 transition-colors whitespace-nowrap"
+              :class="{ 'text-blue-600': $route.path.startsWith('/rank') }"
+              @click="goToRank"
+            >
+              RANK
+            </button>
           </div>
 
           <!-- モバイルメニュー -->
@@ -157,23 +165,64 @@
                 >
                   ABOUT ME
                 </NuxtLink>
+                <button
+                  :class="[
+                    'block w-full text-left px-4 py-3 transition-colors',
+                    isDarkMode
+                      ? 'text-gray-300 hover:text-blue-400 hover:bg-gray-700'
+                      : 'text-gray-600 hover:text-blue-600 hover:bg-gray-50',
+                    {
+                      'text-blue-400 bg-gray-700': $route.path.startsWith('/rank') && isDarkMode,
+                      'text-blue-600 bg-blue-50': $route.path.startsWith('/rank') && !isDarkMode,
+                    },
+                  ]"
+                  @click="goToRank"
+                >
+                  RANK
+                </button>
               </div>
             </div>
           </div>
         </nav>
       </div>
     </div>
+
+    <RankConfirmModal
+      v-model="isRankModalOpen"
+      @confirm="confirmGoToRank"
+    />
   </header>
 </template>
 
 <script setup>
 import { ref, onMounted, onUnmounted } from 'vue'
-import { DarkModeToggle } from '#components'
+import { DarkModeToggle, RankConfirmModal } from '#components'
 import { injectDarkMode } from '~/composables/domains/darkMode'
 
 const { isDarkMode } = injectDarkMode()
+const router = useRouter()
 
 const isMenuOpen = ref(false)
+const isRankModalOpen = ref(false)
+
+const RANK_CONFIRM_STORAGE_KEY = 'rankConfirmed'
+
+const goToRank = () => {
+  isMenuOpen.value = false
+  if (import.meta.client && localStorage.getItem(RANK_CONFIRM_STORAGE_KEY) === 'true') {
+    router.push('/rank')
+    return
+  }
+  isRankModalOpen.value = true
+}
+
+const confirmGoToRank = () => {
+  if (import.meta.client) {
+    localStorage.setItem(RANK_CONFIRM_STORAGE_KEY, 'true')
+  }
+  isRankModalOpen.value = false
+  router.push('/rank')
+}
 
 const handleResize = () => {
   if (window.innerWidth >= 640) {

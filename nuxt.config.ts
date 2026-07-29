@@ -11,13 +11,6 @@ export default defineNuxtConfig({
     '@nuxt/ui',
   ],
 
-  colorMode: {
-    classSuffix: '',
-    preference: 'light',
-    fallback: 'light',
-    storageKey: 'darkMode',
-  },
-
   components: [
     {
       path: '~/components',
@@ -28,6 +21,21 @@ export default defineNuxtConfig({
   devtools: { enabled: false },
 
   css: ['~/assets/css/main.css'],
+
+  colorMode: {
+    classSuffix: '',
+    preference: 'light',
+    fallback: 'light',
+    storageKey: 'darkMode',
+  },
+
+  runtimeConfig: {
+    public: {
+      supabaseUrl: '',
+      supabaseAnonKey: '',
+      rankAdminEmail: '',
+    },
+  },
 
   // devServer: {
   //   host: '0.0.0.0',

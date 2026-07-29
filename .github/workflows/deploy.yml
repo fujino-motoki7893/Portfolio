@@ -25,6 +25,10 @@ jobs:
       # Pick your own package manager and build script
       - run: pnpm install
       - run: pnpm run build
+        env:
+          NUXT_PUBLIC_SUPABASE_URL: ${{ secrets.NUXT_PUBLIC_SUPABASE_URL }}
+          NUXT_PUBLIC_SUPABASE_ANON_KEY: ${{ secrets.NUXT_PUBLIC_SUPABASE_ANON_KEY }}
+          NUXT_PUBLIC_RANK_ADMIN_EMAIL: ${{ secrets.NUXT_PUBLIC_RANK_ADMIN_EMAIL }}
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
