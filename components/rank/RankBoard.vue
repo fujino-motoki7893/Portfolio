@@ -64,7 +64,7 @@
                   isDarkMode ? 'border-gray-700 hover:border-blue-500' : 'border-gray-200 hover:border-blue-400',
                   isEditMode ? 'cursor-grab' : 'cursor-default',
                 ]"
-                @click="isEditMode && openItemForm(tier, item)"
+                @click="handleItemClick(tier, item)"
               >
                 <img
                   v-if="item.image_url"
@@ -112,6 +112,7 @@
       @save="handleItemSave"
       @delete="handleItemDelete"
     />
+    <RankImageLightbox v-model="lightboxImage" />
   </div>
 </template>
 
@@ -191,6 +192,16 @@ const handleItemSave = (name: string, imageUrl: string | null) => {
 
 const handleItemDelete = (id: string) => {
   deleteItem(id)
+}
+
+const lightboxImage = ref<string | null>(null)
+
+const handleItemClick = (tier: RankTierWithItems, item: RankItemRow) => {
+  if (isEditMode.value) {
+    openItemForm(tier, item)
+    return
+  }
+  if (item.image_url) lightboxImage.value = item.image_url
 }
 
 interface DraggableChangeEvent {

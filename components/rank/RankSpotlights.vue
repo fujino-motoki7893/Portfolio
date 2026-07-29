@@ -34,7 +34,7 @@
             isDarkMode ? 'bg-gray-800 border-gray-700' : 'bg-white border-gray-200',
             isEditMode ? 'cursor-grab hover:border-blue-400' : 'cursor-default',
           ]"
-          @click="isEditMode && openSpotlightForm(spotlight)"
+          @click="handleClick(spotlight)"
         >
           <img
             v-if="spotlight.image_url"
@@ -76,6 +76,7 @@
       @save="handleSave"
       @delete="handleDelete"
     />
+    <RankImageLightbox v-model="lightboxImage" />
   </div>
 </template>
 
@@ -126,5 +127,15 @@ const handleSave = (title: string, description: string, imageUrl: string | null)
 
 const handleDelete = (id: string) => {
   deleteSpotlight(id)
+}
+
+const lightboxImage = ref<string | null>(null)
+
+const handleClick = (spotlight: RankSpotlightRow) => {
+  if (isEditMode.value) {
+    openSpotlightForm(spotlight)
+    return
+  }
+  if (spotlight.image_url) lightboxImage.value = spotlight.image_url
 }
 </script>
