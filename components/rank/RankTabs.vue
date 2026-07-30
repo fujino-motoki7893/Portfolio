@@ -62,6 +62,20 @@
           ? 'bg-gray-800 border-gray-700 text-gray-300 hover:border-blue-500'
           : 'bg-white border-gray-300 text-gray-600 hover:border-blue-400',
       ]"
+      @click="isFeedbackModalOpen = true"
+    >
+      ご意見箱
+    </button>
+
+    <button
+      type="button"
+      class="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg text-sm font-medium
+      border transition-colors"
+      :class="[
+        isDarkMode
+          ? 'bg-gray-800 border-gray-700 text-gray-300 hover:border-blue-500'
+          : 'bg-white border-gray-300 text-gray-600 hover:border-blue-400',
+      ]"
       @click="isAboutModalOpen = true"
     >
       What's this page?
@@ -75,6 +89,7 @@
     />
 
     <RankAboutModal v-model="isAboutModalOpen" />
+    <RankFeedbackModal v-model="isFeedbackModalOpen" />
   </div>
 </template>
 
@@ -112,6 +127,7 @@ const handleReorder = () => {
 const isCategoryFormOpen = ref(false)
 const editingCategory = ref<RankCategoryRow | null>(null)
 const isAboutModalOpen = ref(false)
+const isFeedbackModalOpen = ref(false)
 
 const openCategoryForm = (category: RankCategoryRow | null) => {
   editingCategory.value = category
