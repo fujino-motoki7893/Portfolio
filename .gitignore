@@ -26,3 +26,7 @@ logs
 # Claude Code local settings
 .claude/settings.local.json
 .claude/launch.json
+
+# Supabase CLI local state
+supabase/.temp
+supabase/.branches
