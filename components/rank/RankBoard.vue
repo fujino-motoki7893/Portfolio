@@ -212,6 +212,6 @@ interface DraggableChangeEvent {
 const handleItemChange = (tier: RankTierWithItems, event: DraggableChangeEvent) => {
   const movedElement = event.added?.element ?? event.moved?.element
   if (!movedElement) return
-  moveItem(movedElement.id, tier.id, tier.items.map(i => i.id))
+  moveItem(movedElement.id, movedElement.tier_id, tier.id, tier.items.map(i => i.id))
 }
 </script>

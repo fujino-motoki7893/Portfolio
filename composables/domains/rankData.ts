@@ -195,11 +195,15 @@ export const useRankBoard = (categoryId: Ref<string | undefined>) => {
   }
 
   /** 項目をtierをまたいで移動、または同一tier内で並び替え */
-  const moveItem = async (itemId: string, targetTierId: string, orderedIdsInTargetTier: string[]) => {
+  const moveItem = async (
+    itemId: string,
+    sourceTierId: string,
+    targetTierId: string,
+    orderedIdsInTargetTier: string[],
+  ) => {
     if (!supabase) return
 
-    const sourceTier = tiers.value.find(t => t.items.some(item => item.id === itemId))
-    if (sourceTier && sourceTier.id !== targetTierId) {
+    if (sourceTierId !== targetTierId) {
       const { error } = await supabase.from('rank_items').update({ tier_id: targetTierId }).eq('id', itemId)
       if (error) return reportError(error)
     }
